@@ -13,6 +13,7 @@ class ProductDetail extends PureComponent {
       selectProductId
     } = this.props;
 /*test*/
+/////
     const category = categories[product.categoryId];
     return (
       <div>
