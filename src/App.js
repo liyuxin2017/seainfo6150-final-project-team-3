@@ -33,6 +33,11 @@ let App = (props) => (
       {/* start example of link to route */}
       <Link to='/'>Home</Link>
       {/* end example of link to route */}
+        <Link to='/Products'>Products</Link>
+        <Link to='/About'>Abouts</Link>
+        <Link to='/Contact'>Contact</Link>
+
+
 
       {/* start list of product category links */}
       <Categories categories={Object.values(props.categories)} />
