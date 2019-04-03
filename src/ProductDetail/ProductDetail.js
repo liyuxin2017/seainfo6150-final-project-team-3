@@ -18,7 +18,7 @@ class ProductDetail extends PureComponent {
       <div>
         <span>{product.title}</span>
         <img src={category.img.lg} />
-<div></div>
+
         {/* start order button */}
           <span> ID:{product.id}</span><br></br>
           <span> Name:{product.title}</span><br></br>
@@ -27,7 +27,6 @@ class ProductDetail extends PureComponent {
           <span> Sale Price:{product.price}</span><br></br>
           <span> Price:{product.price}</span><br></br>
           <span> Description:{product.description}</span><br></br>
-          /test
 
         <Link to="/order/1" onClick={selectProductId.bind(null, product.id)}>Order</Link>
         {/* end order button */}
