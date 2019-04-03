@@ -7,4 +7,30 @@
 }
 
 .container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto;
+}
+
+.headerContainer {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.mainContainer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 350%;
+}
+
+.header {
+  text-decoration: none;
+  font-size: 200%;
 }

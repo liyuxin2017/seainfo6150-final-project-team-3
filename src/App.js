@@ -27,33 +27,35 @@ import Summary from './Order/Summary';
 import ThankYou from './Order/ThankYou';
 import NotFound from './NotFound/NotFound';
 
+//class
+import sty from './App.module.css';
+
 let App = (props) => (
   <Router>
     <div className={styles.container}>
-      {/* start example of link to route */}
-      <Link to='/'>Home</Link>
-      {/* end example of link to route */}
-        <Link to='/Products'>Products</Link>
-        <Link to='/About'>Abouts</Link>
-        <Link to='/Contact'>Contact</Link>
-
-
+      <div className={styles.headerContainer}>
+        <Link to='/' className={styles.logo}>VehicleMart</Link>
+        <Link to='/' className={styles.header}>Home</Link>
+        <Link to='/Products' className={styles.header}>Products</Link>
+        <Link to='/About' className={styles.header}>Abouts</Link>
+        <Link to='/Contact' className={styles.header}>Contact</Link>
+      </div>
 
       {/* start list of product category links */}
-      <Categories categories={Object.values(props.categories)} />
+        <Categories categories={Object.values(props.categories)} />
       {/* end list of product category links */}
 
 
       {/* start 5 most recently viewed products */}
-      <ViewedProducts
-        categories={props.categories}
-        products={
-          props.viewedProducts.map(productId => props.products[productId])
-        }
-      />
+        <ViewedProducts
+          categories={props.categories}
+          products={
+            props.viewedProducts.map(productId => props.products[productId])
+          }
+        />
       {/* end 5 most recently viewed products */}
 
-      <main>
+      <main className={styles.mainContainer}>
         {/* start error display -- I suggest you leave this here */}
         {
           props.error && <Error error={props.error} />
