@@ -17,18 +17,18 @@ class OrderStep2 extends Component {
     });
   }
 
+  componentDidMount() {}
+
+  toggleShipmentAddress = () => {
+    this.textInput.disabled = !this.textInput.disabled;
+    this.textInput1.disabled = !this.textInput1.disabled;
+    this.textInput2.disabled = !this.textInput2.disabled;
+    this.textInput3.disabled = !this.textInput3.disabled;
+  };
+
   render() {
     const { options, selectedProductId, setUserInfo } = this.props;
 
-    function toggleShipmentAddress() {
-      const shipmentAddressList = Array.from(
-        document.querySelectorAll('{styles.shipment}')
-      );
-      console.log(shipmentAddressList.length);
-      for (let shipmentAddress of shipmentAddressList) {
-        shipmentAddress.classList.toggle('disabled');
-      }
-    }
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/summary' />
     ) : (
@@ -97,13 +97,13 @@ class OrderStep2 extends Component {
           <input
             type='radio'
             name='shipmentAddress'
-            onClick={toggleShipmentAddress}
+            onClick={this.toggleShipmentAddress}
           />
           Same as Billing address
           <input
             type='radio'
             name='shipmentAddress'
-            onClick={toggleShipmentAddress}
+            onClick={this.toggleShipmentAddress}
           />
           Enter new address
           <br />
@@ -112,6 +112,9 @@ class OrderStep2 extends Component {
             type='text'
             name='address'
             className={styles.shipment}
+            ref={input => {
+              this.textInput = input;
+            }}
             onChange={setUserInfo.bind(null, 'address')}
           />
           <br />
@@ -120,6 +123,9 @@ class OrderStep2 extends Component {
             type='text'
             name='city'
             className={styles.shipment}
+            ref={input => {
+              this.textInput1 = input;
+            }}
             onChange={setUserInfo.bind(null, 'city')}
           />
           State:{' '}
@@ -127,6 +133,9 @@ class OrderStep2 extends Component {
             type='text'
             name='state'
             className={styles.shipment}
+            ref={input => {
+              this.textInput2 = input;
+            }}
             onChange={setUserInfo.bind(null, 'state')}
           />
           Zip code:{' '}
@@ -134,6 +143,9 @@ class OrderStep2 extends Component {
             type='text'
             name='zipCode'
             className={styles.shipment}
+            ref={input => {
+              this.textInput3 = input;
+            }}
             onChange={setUserInfo.bind(null, 'zipCode')}
           />
         </fieldset>
