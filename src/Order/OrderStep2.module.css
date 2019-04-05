@@ -1,7 +1,9 @@
-.disabled {
-  background: grey;
-  readonly: readonly;
+.submit {
+  text-align: right;
+  font-size: 2em;
+  border: none;
 }
 
-.shipment {
+.textFields {
+  line-height: 2em;
 }
