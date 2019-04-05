@@ -1,19 +1,19 @@
 import { get, has } from 'lodash';
 
 export const selectProductId = ({ id }) => ({
- type: 'SELECT_PRODUCT',
- payload: { id }
+  type: 'SELECT_PRODUCT',
+  payload: { id }
 });
 
 export const viewProduct = ({ id }) => ({
- type: 'VIEW_PRODUCT',
- payload: { id }
+  type: 'VIEW_PRODUCT',
+  payload: { id }
 });
 
 export const setUserInfo = ({ id, e }) => (dispatch, getState) => {
   const value = e.target.value;
   dispatch(setInfo({ id, value }));
-}
+};
 
 export const setProductOption = ({ id, e }) => (dispatch, getState) => {
   dispatch(removeError());
@@ -102,18 +102,18 @@ export const setProductOption = ({ id, e }) => (dispatch, getState) => {
       break;
     default:
   }
-}
+};
 
 const removeError = () => ({
   type: 'REMOVE_ERROR'
 });
 
-const removeOption = (id) => ({
+const removeOption = id => ({
   type: 'REMOVE_OPTION',
   payload: { id }
 });
 
-const setError = (error) => ({
+const setError = error => ({
   type: 'SET_ERROR',
   payload: { error }
 });
@@ -132,87 +132,112 @@ const setInfo = ({ id, value }) => ({
   }
 });
 
-const normalizeBoolean = (value) => {
+const normalizeBoolean = value => {
   return value === 'on' || value === 'yes' || value;
-}
+};
 
-const setColor = (color) => (dispatch, getState) => {
+const setColor = color => (dispatch, getState) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
   if (Object.keys(options.color.requirements).includes(selectedProduct.type)) {
     color = options.color.requirements[selectedProduct.type];
   }
   dispatch(setOption({ id: 'color', value: color }));
-}
+};
 
-const setNumSeats = (numSeats) => (dispatch, getState) => {
+const setNumSeats = numSeats => (dispatch, getState) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
   const maximumNumSeats = options.numSeats.requirements.maximumNum;
   const minimumNumSeats = options.numSeats.requirements.minimumNum;
 
-  if (Object.keys(options.numSeats.requirements).includes(selectedProduct.type)) {
+  if (
+    Object.keys(options.numSeats.requirements).includes(selectedProduct.type)
+  ) {
     numSeats = options.numSeats.requirements[selectedProduct.type];
   }
   if (numSeats > maximumNumSeats) {
-    dispatch(setError(`Vehicles can have a maximum of ${maximumNumSeats} seats.`));
+    dispatch(
+      setError(`Vehicles can have a maximum of ${maximumNumSeats} seats.`)
+    );
   }
   if (numSeats < minimumNumSeats) {
-    dispatch(setError(`Vehicles can have a minimum of ${minimumNumSeats} seats.`));
+    dispatch(
+      setError(`Vehicles can have a minimum of ${minimumNumSeats} seats.`)
+    );
   }
   dispatch(setOption({ id: 'numSeats', value: numSeats }));
-}
+};
 
-const setInteriorFabricColor = (interiorFabricColor) => (dispatch, getState) => {
-  dispatch(setOption({ id: 'interiorFabricColor', value: interiorFabricColor }));
-}
+const setInteriorFabricColor = interiorFabricColor => (dispatch, getState) => {
+  dispatch(
+    setOption({ id: 'interiorFabricColor', value: interiorFabricColor })
+  );
+};
 
-const setDashboardColor = (dashboardColor) => (dispatch, getState) => {
+const setDashboardColor = dashboardColor => (dispatch, getState) => {
   dispatch(setOption({ id: 'dashboardColor', value: dashboardColor }));
-}
+};
 
-const setDashboardLightsColor = (dashboardLightsColor) => (dispatch, getState) => {
-  dispatch(setOption({ id: 'dashboardLightsColor', value: dashboardLightsColor }));
-}
+const setDashboardLightsColor = dashboardLightsColor => (
+  dispatch,
+  getState
+) => {
+  dispatch(
+    setOption({ id: 'dashboardLightsColor', value: dashboardLightsColor })
+  );
+};
 
-const setHubcapsMaterial = (hubcapsMaterial) => (dispatch, getState) => {
+const setHubcapsMaterial = hubcapsMaterial => (dispatch, getState) => {
   dispatch(setOption({ id: 'hubcapsMaterial', value: hubcapsMaterial }));
-}
+};
 
-const setHasGPS = (hasGPS) => (dispatch, getState) => {
+const setHasGPS = hasGPS => (dispatch, getState) => {
   const value = normalizeBoolean(hasGPS);
   if (value) {
     dispatch(setOption({ id: 'hasGPS', value }));
   } else {
     dispatch(removeOption('hasGPS'));
   }
-}
+};
 
-const setNumExhausts = (numExhausts) => (dispatch, getState) => {
+const setNumExhausts = numExhausts => (dispatch, getState) => {
   const { options } = getState();
   const maximumNumExhausts = options.numExhausts.requirements.maximumNum;
   const minimumNumExhausts = options.numExhausts.requirements.minimumNum;
 
   if (numExhausts > maximumNumExhausts) {
-    dispatch(setError(`Vehicles can have a maximum of ${maximumNumExhausts} exhausts.`));
+    dispatch(
+      setError(`Vehicles can have a maximum of ${maximumNumExhausts} exhausts.`)
+    );
   }
   if (numExhausts < minimumNumExhausts) {
-    dispatch(setError(`Vehicles can have a minimum of ${minimumNumExhausts} exhausts.`));
+    dispatch(
+      setError(`Vehicles can have a minimum of ${minimumNumExhausts} exhausts.`)
+    );
   }
 
   dispatch(setOption({ id: 'numExhausts', value: numExhausts }));
-}
+};
 
-const setHasTintedWindows = (hasTintedWindows) => (dispatch, getState) => {
+const setHasTintedWindows = hasTintedWindows => (dispatch, getState) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
-  const hasProductRequirement = has(options.hasTintedWindows.requirements, selectedProduct.type);
+  const hasProductRequirement = has(
+    options.hasTintedWindows.requirements,
+    selectedProduct.type
+  );
 
   if (hasProductRequirement) {
-    hasTintedWindows = get(options.hasTintedWindows.requirements, selectedProduct.type)
+    hasTintedWindows = get(
+      options.hasTintedWindows.requirements,
+      selectedProduct.type
+    );
 
     if (!hasTintedWindows) {
-      dispatch(setError('The selected vehicle does not support tinted windows.'));
+      dispatch(
+        setError('The selected vehicle does not support tinted windows.')
+      );
     }
   }
 
@@ -222,12 +247,15 @@ const setHasTintedWindows = (hasTintedWindows) => (dispatch, getState) => {
   } else {
     dispatch(removeOption('hasTintedWindows'));
   }
-}
+};
 
-const setHasRadio = (hasRadio) => (dispatch, getState) => {
+const setHasRadio = hasRadio => (dispatch, getState) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
-  const hasProductRequirement = has(options.hasRadio.requirements, selectedProduct.type);
+  const hasProductRequirement = has(
+    options.hasRadio.requirements,
+    selectedProduct.type
+  );
 
   if (hasProductRequirement) {
     hasRadio = get(options.hasRadio.requirements, selectedProduct.type);
@@ -243,22 +271,22 @@ const setHasRadio = (hasRadio) => (dispatch, getState) => {
   } else {
     dispatch(removeOption('hasRadio'));
   }
-}
+};
 
-const setRadioType = (radioType) => (dispatch, getState) => {
+const setRadioType = radioType => (dispatch, getState) => {
   dispatch(setOption({ id: 'radioType', value: radioType }));
-}
+};
 
-const setHasGloveBox = (hasGloveBox) => (dispatch, getState) => {
+const setHasGloveBox = hasGloveBox => (dispatch, getState) => {
   const value = normalizeBoolean(hasGloveBox);
   if (value) {
     dispatch(setOption({ id: 'hasGloveBox', value }));
   } else {
     dispatch(removeOption('hasGloveBox'));
   }
-}
+};
 
-const setHasCupholders = (hasCupholders) => (dispatch, getState) => {
+const setHasCupholders = hasCupholders => (dispatch, getState) => {
   const value = normalizeBoolean(hasCupholders);
   if (value) {
     dispatch(setOption({ id: 'hasCupholders', value }));
@@ -266,31 +294,46 @@ const setHasCupholders = (hasCupholders) => (dispatch, getState) => {
     dispatch(removeOption('hasCupholders'));
     dispatch(removeOption('numCupholders'));
   }
-}
+};
 
-const setNumCupholders = (numCupholders) => (dispatch, getState) => {
+const setNumCupholders = numCupholders => (dispatch, getState) => {
   const { options } = getState();
   const maximumNumCupholders = options.numCupholders.requirements.maximumNum;
 
   if (numCupholders > maximumNumCupholders) {
-    dispatch(setError(`Vehicles can have a maximum of ${maximumNumCupholders} cupholders.`));
+    dispatch(
+      setError(
+        `Vehicles can have a maximum of ${maximumNumCupholders} cupholders.`
+      )
+    );
   }
   if (numCupholders < 0) {
     dispatch(setError(`Vehicles cannot have negative number of cupholders.`));
   }
   dispatch(setOption({ id: 'numCupholders', value: numCupholders }));
-}
+};
 
-const setHasCigaretteLighters = (hasCigaretteLighters) => (dispatch, getState) => {
+const setHasCigaretteLighters = hasCigaretteLighters => (
+  dispatch,
+  getState
+) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
-  const hasProductRequirement = has(options.hasCigaretteLighters.requirements, selectedProduct.type);
+  const hasProductRequirement = has(
+    options.hasCigaretteLighters.requirements,
+    selectedProduct.type
+  );
 
   if (hasProductRequirement) {
-    hasCigaretteLighters = get(options.hasCigaretteLighters.requirements, selectedProduct.type)
+    hasCigaretteLighters = get(
+      options.hasCigaretteLighters.requirements,
+      selectedProduct.type
+    );
 
     if (!hasCigaretteLighters) {
-      dispatch(setError('The selected vehicle does not support cigarette lighters.'));
+      dispatch(
+        setError('The selected vehicle does not support cigarette lighters.')
+      );
     }
   }
 
@@ -301,45 +344,63 @@ const setHasCigaretteLighters = (hasCigaretteLighters) => (dispatch, getState) =
     dispatch(removeOption('hasCigaretteLighters'));
     dispatch(removeOption('numCigaretteLighters'));
   }
-}
+};
 
-const setNumCigaretteLighters = (numCigaretteLighters) => (dispatch, getState) => {
-  dispatch(setOption({ id: 'numCigaretteLighters', value: numCigaretteLighters }));
-}
+const setNumCigaretteLighters = numCigaretteLighters => (
+  dispatch,
+  getState
+) => {
+  dispatch(
+    setOption({ id: 'numCigaretteLighters', value: numCigaretteLighters })
+  );
+};
 
-const setSpareTire = (spareTire) => (dispatch, getState) => {
+const setSpareTire = spareTire => (dispatch, getState) => {
   dispatch(setOption({ id: 'spareTire', value: spareTire }));
-}
+};
 
-const setHasHoodOrnament = (hasHoodOrnament) => (dispatch, getState) => {
+const setHasHoodOrnament = hasHoodOrnament => (dispatch, getState) => {
   const value = normalizeBoolean(hasHoodOrnament);
   if (value) {
     const { options } = getState();
     dispatch(setOption({ id: 'hasHoodOrnament', value }));
-    dispatch(setOption({ id: 'hoodOrnament', value: options.hoodOrnament.values[0].id }));
+    dispatch(
+      setOption({
+        id: 'hoodOrnament',
+        value: options.hoodOrnament.values[0].id
+      })
+    );
   } else {
     dispatch(removeOption('hasHoodOrnament'));
   }
-}
+};
 
-const setHoodOrnament = (hoodOrnament) => (dispatch, getState) => {
+const setHoodOrnament = hoodOrnament => (dispatch, getState) => {
   dispatch(setOption({ id: 'hoodOrnament', value: hoodOrnament }));
-}
+};
 
-const setEngine = (engine) => (dispatch, getState) => {
+const setEngine = engine => (dispatch, getState) => {
   dispatch(setOption({ id: 'engine', value: engine }));
-}
+};
 
-const setHasAirConditioning = (hasAirConditioning) => (dispatch, getState) => {
+const setHasAirConditioning = hasAirConditioning => (dispatch, getState) => {
   const { options, products, selectedProductId } = getState();
   const selectedProduct = products[selectedProductId];
-  const hasProductRequirement = has(options.hasAirConditioning.requirements, selectedProduct.type);
+  const hasProductRequirement = has(
+    options.hasAirConditioning.requirements,
+    selectedProduct.type
+  );
 
   if (hasProductRequirement) {
-    hasAirConditioning = get(options.hasAirConditioning.requirements, selectedProduct.type)
+    hasAirConditioning = get(
+      options.hasAirConditioning.requirements,
+      selectedProduct.type
+    );
 
     if (!hasAirConditioning) {
-      dispatch(setError('The selected vehicle does not support air conditioning.'));
+      dispatch(
+        setError('The selected vehicle does not support air conditioning.')
+      );
     }
   }
 
@@ -349,31 +410,34 @@ const setHasAirConditioning = (hasAirConditioning) => (dispatch, getState) => {
   } else {
     dispatch(removeOption('hasAirConditioning'));
   }
-}
+};
 
-
-const setHasTrunkMonkey = (hasTrunkMonkey) => (dispatch, getState) => {
+const setHasTrunkMonkey = hasTrunkMonkey => (dispatch, getState) => {
   const value = normalizeBoolean(hasTrunkMonkey);
   if (value) {
     const { options } = getState();
     dispatch(setOption({ id: 'hasTrunkMonkey', value }));
-    dispatch(setOption({ id: 'trunkMonkey', value: options.trunkMonkey.values[0].id }));
+    dispatch(
+      setOption({ id: 'trunkMonkey', value: options.trunkMonkey.values[0].id })
+    );
   } else {
     dispatch(removeOption('hasTrunkMonkey'));
     dispatch(removeOption('trunkMonkey'));
   }
-}
+};
 
-const setTrunkMonkey = (trunkMonkey) => (dispatch, getState) => {
+const setTrunkMonkey = trunkMonkey => (dispatch, getState) => {
   dispatch(setOption({ id: 'trunkMonkey', value: trunkMonkey }));
-}
+};
 
-const setFloormatsColor = (floormatsColor) => (dispatch, getState) => {
+const setFloormatsColor = floormatsColor => (dispatch, getState) => {
   dispatch(setOption({ id: 'floormatsColor', value: floormatsColor }));
-}
+};
 
-
-const setHasMonogrammedSteeringWheelCover = (hasMonogrammedSteeringWheelCover) => (dispatch, getState) => {
+const setHasMonogrammedSteeringWheelCover = hasMonogrammedSteeringWheelCover => (
+  dispatch,
+  getState
+) => {
   const value = normalizeBoolean(hasMonogrammedSteeringWheelCover);
   if (value) {
     dispatch(setOption({ id: 'hasMonogrammedSteeringWheelCover', value }));
@@ -381,18 +445,25 @@ const setHasMonogrammedSteeringWheelCover = (hasMonogrammedSteeringWheelCover) =
     dispatch(removeOption('hasMonogrammedSteeringWheelCover'));
     dispatch(removeOption('monogram'));
   }
-}
+};
 
-const setMonogram = (monogram) => (dispatch, getState) => {
+const setMonogram = monogram => (dispatch, getState) => {
   const { options } = getState();
   const maximumNumMonogramLetters = options.monogram.requirements.maximumNum;
 
-  if (!(/[a-zA-Z]/).test(monogram)) {
+  if (!/[a-zA-Z]/.test(monogram)) {
     dispatch(setError(`Monograms can only be letters`));
   }
 
-  if (monogram.length < maximumNumMonogramLetters || monogram.length > maximumNumMonogramLetters) {
-    dispatch(setError(`Vehicles must have ${maximumNumMonogramLetters} letters in the monogram.`));
+  if (
+    monogram.length < maximumNumMonogramLetters ||
+    monogram.length > maximumNumMonogramLetters
+  ) {
+    dispatch(
+      setError(
+        `Vehicles must have ${maximumNumMonogramLetters} letters in the monogram.`
+      )
+    );
   }
   dispatch(setOption({ id: 'monogram', value: monogram }));
-}
+};

@@ -1,0 +1,7 @@
+.disabled {
+  background: grey;
+  readonly: readonly;
+}
+
+.shipment {
+}
