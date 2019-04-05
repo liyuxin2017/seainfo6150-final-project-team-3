@@ -1,0 +1,17 @@
+.productInfo {
+  display: flex;
+  flex-direction: row;
+  text-align: bottom;
+  line-height: 1.8em;
+}
+
+.image {
+  width: 70%;
+  height: 70%;
+  margin: 0;
+}
+
+.button {
+  margin-top: 20%;
+  text-align: right;
+}

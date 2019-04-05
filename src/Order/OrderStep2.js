@@ -20,10 +20,10 @@ class OrderStep2 extends Component {
   componentDidMount() {}
 
   toggleShipmentAddress = () => {
-    this.textInput.disabled = !this.textInput.disabled;
-    this.textInput1.disabled = !this.textInput1.disabled;
-    this.textInput2.disabled = !this.textInput2.disabled;
-    this.textInput3.disabled = !this.textInput3.disabled;
+    this.addressText.disabled = !this.addressText.disabled;
+    this.cityText.disabled = !this.cityText.disabled;
+    this.stateText.disabled = !this.stateText.disabled;
+    this.zipText.disabled = !this.zipText.disabled;
   };
 
   render() {
@@ -33,7 +33,7 @@ class OrderStep2 extends Component {
       <Redirect to='/order/summary' />
     ) : (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <fieldset>
+        <fieldset className={styles.textFields}>
           <legend>Personal Information</legend>
           Last Name:{' '}
           <input
@@ -65,7 +65,7 @@ class OrderStep2 extends Component {
             onChange={setUserInfo.bind(null, 'cellNumber')}
           />
         </fieldset>
-        <fieldset>
+        <fieldset className={styles.textFields}>
           <legend>Address Information</legend>
           Billing Address:{' '}
           <input
@@ -113,7 +113,7 @@ class OrderStep2 extends Component {
             name='address'
             className={styles.shipment}
             ref={input => {
-              this.textInput = input;
+              this.addressText = input;
             }}
             onChange={setUserInfo.bind(null, 'address')}
           />
@@ -124,7 +124,7 @@ class OrderStep2 extends Component {
             name='city'
             className={styles.shipment}
             ref={input => {
-              this.textInput1 = input;
+              this.cityText = input;
             }}
             onChange={setUserInfo.bind(null, 'city')}
           />
@@ -134,7 +134,7 @@ class OrderStep2 extends Component {
             name='state'
             className={styles.shipment}
             ref={input => {
-              this.textInput2 = input;
+              this.stateText = input;
             }}
             onChange={setUserInfo.bind(null, 'state')}
           />
@@ -144,13 +144,13 @@ class OrderStep2 extends Component {
             name='zipCode'
             className={styles.shipment}
             ref={input => {
-              this.textInput3 = input;
+              this.zipText = input;
             }}
             onChange={setUserInfo.bind(null, 'zipCode')}
           />
         </fieldset>
 
-        <fieldset>
+        <fieldset className={styles.submit}>
           <input type='submit' value='Go to summary' />
         </fieldset>
       </form>
@@ -160,7 +160,8 @@ class OrderStep2 extends Component {
 
 OrderStep2.propTypes = {
   options: PropTypes.object.isRequired,
-  selectedProductId: PropTypes.string
+  selectedProductId: PropTypes.string,
+  setUserInfo: PropTypes.object
 };
 
 export default OrderStep2;

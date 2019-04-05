@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
-import TotalPrice from "./TotalPrice";
+import TotalPrice from './TotalPrice';
 
 class Summary extends Component {
   constructor(props) {
     super(props);
     this.state = {
       submittedSuccessfully: false
-    }
+    };
   }
 
   handleSubmit() {
@@ -27,32 +27,39 @@ class Summary extends Component {
       userInfo
     } = this.props;
 
-    return this.state.submittedSuccessfully
-      ? (<Redirect to="/order/thank-you" />)
-      : (
+    console.log(
+      'selectedOptions: ' +
+        selectedOptions +
+        ' selectedProductId: ' +
+        selectedProductId +
+        ' userInfo: ' +
+        userInfo
+    );
+    return this.state.submittedSuccessfully ? (
+      <Redirect to='/order/thank-you' />
+    ) : (
       <form onSubmit={this.handleSubmit.bind(this)}>
-
         {/* This will iterate through all the selected options so you can see what the user chose. */}
         <ul>
-        {
-          Object.keys(selectedOptions).map((option) => {
+          {Object.keys(selectedOptions).map(option => {
             const originalOption = options[option];
             const selectedValue = selectedOptions[option];
 
             return (
-                <li key={option}>{originalOption.name}: {selectedValue}</li>
+              <li key={option}>
+                {originalOption.name}: {selectedValue}
+              </li>
             );
-          })
-        }
+          })}
         </ul>
 
         {/* This will iterate through all the user info so you can see what the user entered. */}
         <ul>
-        {
-          Object.keys(userInfo).map((info) => (
-            <li key={info}>{info}: {userInfo[info]}</li>
-          ))
-        }
+          {Object.keys(userInfo).map(info => (
+            <li key={info}>
+              {info}: {userInfo[info]}
+            </li>
+          ))}
         </ul>
 
         <TotalPrice
@@ -62,10 +69,10 @@ class Summary extends Component {
         />
 
         <fieldset>
-          <input type="submit" value="Submit order" />
+          <input type='submit' value='Submit order' />
         </fieldset>
       </form>
-    )
+    );
   }
 }
 
