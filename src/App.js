@@ -32,10 +32,12 @@ import sty from './App.module.css';
 let App = props => (
   <Router>
     <div className={styles.container}>
-      <div className={styles.headerContainer}>
+      <div className={styles.logoContainer}>
         <Link to='/' className={styles.logo}>
           VehicleMart
         </Link>
+      </div>
+      <div className={styles.headerContainer}>
         <Link to='/' className={styles.header}>
           Home
         </Link>

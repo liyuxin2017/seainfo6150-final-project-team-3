@@ -4,3 +4,7 @@
   display: flex;
   overflow-x: scroll;
 }
+
+.image {
+  height: 95%;
+}
