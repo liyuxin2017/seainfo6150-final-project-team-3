@@ -1,13 +1,15 @@
 .container {
   color: aliceblue;
-  background: rgb(35, 34, 99);
+  background: rgb(18, 18, 61);
   padding-left: 1em;
   padding-right: 1em;
   min-width: max-content;
   height: -webkit-fill-available;
+  font-family: sans-serif;
 }
 
 .link {
   color: aliceblue;
   line-height: 2em;
+  text-decoration: none;
 }

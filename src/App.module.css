@@ -6,6 +6,8 @@
   font-size: 1.6em;
   padding: 0;
   margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .container {
@@ -20,7 +22,7 @@
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  background: rgb(35, 34, 99);
+  background: rgb(18, 18, 61);
   line-height: 4em;
   padding-right: 15em;
 }
@@ -34,10 +36,12 @@
   text-decoration: none;
   font-size: 200%;
   color: aliceblue;
+  font-family: cursive;
 }
 
 .header {
   text-decoration: none;
   font-size: 150%;
   color: aliceblue;
+  font-family: 'Gill Sans', sans-serif;
 }
