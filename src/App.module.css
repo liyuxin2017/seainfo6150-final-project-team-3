@@ -9,10 +9,9 @@
 }
 
 .container {
-  min-height: 100%;
   display: grid;
-  grid-template-columns: 15% auto;
-  grid-template-rows: 8% 15% auto;
+  grid-template-columns: 12em auto;
+  grid-template-rows: 5em 12em auto;
 }
 
 .headerContainer {
@@ -20,15 +19,13 @@
   grid-row: 1;
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: center;
   background: rgb(35, 34, 99);
-  line-height: 4em;
-  padding-right: 15em;
 }
 
 .mainContainer {
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 2 / 3;
+  grid-row: 3 / 3;
 }
 
 .logoContainer {
