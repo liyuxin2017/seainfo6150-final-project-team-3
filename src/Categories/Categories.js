@@ -6,20 +6,18 @@ import styles from './Categories.module.css';
 const Categories = ({ categories }) => (
   <div className={styles.container}>
     <ul>
-      {
-        categories.map(category => {
-          return (
-            <li key={category.id}>
-              <Link to={`/products/${category.id}`}>
-                {category.name}
-              </Link>
-            </li>
-          );
-        })
-      }
+      {categories.map(category => {
+        return (
+          <li key={category.id}>
+            <Link to={`/products/${category.id}`} className={styles.link}>
+              {category.name}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   </div>
-  );
+);
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired

@@ -7,13 +7,15 @@ const Products = ({ categories, products }) => {
     const category = categories[product.categoryId];
     return (
       <div key={product.id}>
+        <div>
           <img src={category.img.sm} />
-          <Link to={`/products/${product.categoryId}/${product.id}`}>
-            {product.title}
-          </Link>
+        </div>
+        <Link to={`/products/${product.categoryId}/${product.id}`}>
+          {product.title}
+        </Link>
       </div>
     );
-  })
+  });
 };
 
 Products.propTypes = {

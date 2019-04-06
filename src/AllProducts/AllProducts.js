@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Products from '../Products/Products';
+import styles from './AllProducts.module.css';
 
 const AllProducts = ({ categories, products }) => (
-  <Products categories={categories} products={products} />
+  <div className={styles.container}>
+    <Products categories={categories} products={products} />
+  </div>
 );
 
 AllProducts.propTypes = {
