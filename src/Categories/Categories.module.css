@@ -1,4 +1,13 @@
 .container {
-  grid-column: 1 / 2;
-  grid-row: 2 / 4;
+  color: aliceblue;
+  background: rgb(35, 34, 99);
+  padding-left: 1em;
+  padding-right: 1em;
+  min-width: max-content;
+  height: -webkit-fill-available;
+}
+
+.link {
+  color: aliceblue;
+  line-height: 2em;
 }

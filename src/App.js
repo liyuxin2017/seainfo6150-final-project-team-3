@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styles from './App.module.css';
 
@@ -9,7 +9,6 @@ import {
   setUserInfo,
   viewProduct
 } from './actions/actions';
-
 
 // components
 import Home from './Home/Home';
@@ -30,47 +29,54 @@ import NotFound from './NotFound/NotFound';
 //class
 import sty from './App.module.css';
 
-let App = (props) => (
+let App = props => (
   <Router>
     <div className={styles.container}>
       <div className={styles.headerContainer}>
-        <Link to='/' className={styles.logo}>VehicleMart</Link>
-        <Link to='/' className={styles.header}>Home</Link>
-        <Link to='/Products' className={styles.header}>Products</Link>
-        <Link to='/About' className={styles.header}>Abouts</Link>
-        <Link to='/Contact' className={styles.header}>Contact</Link>
+        <Link to='/' className={styles.logo}>
+          VehicleMart
+        </Link>
+        <Link to='/' className={styles.header}>
+          Home
+        </Link>
+        <Link to='/Products' className={styles.header}>
+          Products
+        </Link>
+        <Link to='/About' className={styles.header}>
+          Abouts
+        </Link>
+        <Link to='/Contact' className={styles.header}>
+          Contact
+        </Link>
       </div>
 
       {/* start list of product category links */}
-        <Categories categories={Object.values(props.categories)} />
+      <Categories categories={Object.values(props.categories)} />
       {/* end list of product category links */}
 
-
       {/* start 5 most recently viewed products */}
-        <ViewedProducts
-          categories={props.categories}
-          products={
-            props.viewedProducts.map(productId => props.products[productId])
-          }
-        />
+      <ViewedProducts
+        categories={props.categories}
+        products={props.viewedProducts.map(
+          productId => props.products[productId]
+        )}
+      />
       {/* end 5 most recently viewed products */}
 
       <main className={styles.mainContainer}>
         {/* start error display -- I suggest you leave this here */}
-        {
-          props.error && <Error error={props.error} />
-        }
+        {props.error && <Error error={props.error} />}
         {/* end error display */}
 
         <Switch>
+          <Route exact path='/' render={() => <Home {...props} />} />
           <Route
-            exact path='/'
-            render={() => <Home {...props} />}
-          />
-          <Route
-            exact path='/products'
+            exact
+            path='/products'
             render={() => {
-              const sortedProducts = Object.values(props.products).sort((a,b) => b.year - a.year);
+              const sortedProducts = Object.values(props.products).sort(
+                (a, b) => b.year - a.year
+              );
               return (
                 <AllProducts
                   categories={props.categories}
@@ -80,16 +86,18 @@ let App = (props) => (
             }}
           />
           <Route
-            exact path='/products/:category'
+            exact
+            path='/products/:category'
             render={routerProps => {
               const categoryId = routerProps.match.params.category;
               const category = props.categories[categoryId];
 
-              const products = Object.values(props.products).filter(product =>
-                product.categoryId === categoryId
+              const products = Object.values(props.products).filter(
+                product => product.categoryId === categoryId
               );
-              const sortedProducts = Object.values(products).sort((a,b) => b.year - a.year);
-
+              const sortedProducts = Object.values(products).sort(
+                (a, b) => b.year - a.year
+              );
 
               return (
                 <CategoryProducts
@@ -106,38 +114,28 @@ let App = (props) => (
               const id = routerProps.match.params.id;
               const product = props.products[id];
 
-              return (
-                <ProductDetail {...props} product={product} />
-              );
+              return <ProductDetail {...props} product={product} />;
             }}
           />
           <Route
-            exact path='/order/1'
+            exact
+            path='/order/1'
             render={() => <OrderStep1 {...props} />}
           />
           <Route
-            exact path='/order/2'
+            exact
+            path='/order/2'
             render={() => <OrderStep2 {...props} />}
           />
           <Route
-            exact path='/order/summary'
+            exact
+            path='/order/summary'
             render={() => <Summary {...props} />}
           />
-          <Route
-            exact path='/order/thank-you'
-            render={() => <ThankYou />}
-          />
-          <Route
-            exact path='/about'
-            render={() => <About {...props} />}
-          />
-          <Route
-            exact path='/contact'
-            render={() => <Contact {...props} />}
-          />
-          <Route
-            render={() => <NotFound {...props} />}
-          />
+          <Route exact path='/order/thank-you' render={() => <ThankYou />} />
+          <Route exact path='/about' render={() => <About {...props} />} />
+          <Route exact path='/contact' render={() => <Contact {...props} />} />
+          <Route render={() => <NotFound {...props} />} />
         </Switch>
       </main>
     </div>
@@ -145,19 +143,20 @@ let App = (props) => (
 );
 
 App = connect(
-  (state) => state,
-  (dispatch) => {
+  state => state,
+  dispatch => {
     return {
-      selectProductId: (productId, e) => dispatch(selectProductId({ id: productId })),
+      selectProductId: (productId, e) =>
+        dispatch(selectProductId({ id: productId })),
       setProductOption: (optionId, e) => {
-        dispatch(setProductOption({ id: optionId, e }))
+        dispatch(setProductOption({ id: optionId, e }));
       },
       setUserInfo: (infoId, e) => {
-        dispatch(setUserInfo({ id: infoId, e }))
+        dispatch(setUserInfo({ id: infoId, e }));
       },
-      viewProduct: (productId) => dispatch(viewProduct({ id: productId }))
-    }
+      viewProduct: productId => dispatch(viewProduct({ id: productId }))
+    };
   }
-)(App)
+)(App);
 
 export default App;

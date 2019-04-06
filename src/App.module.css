@@ -4,33 +4,40 @@
 
 :global(body) {
   font-size: 1.6em;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
+  min-height: 100%;
   display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: auto auto;
+  grid-template-columns: 15% auto;
 }
 
 .headerContainer {
   grid-column: 1 / 3;
-  grid-row: 1 / 2;
+  grid-row: 1;
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  background: rgb(35, 34, 99);
+  line-height: 4em;
+  padding-right: 15em;
 }
 
 .mainContainer {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .logo {
   text-decoration: none;
-  font-size: 350%;
+  font-size: 200%;
+  color: aliceblue;
 }
 
 .header {
   text-decoration: none;
-  font-size: 200%;
+  font-size: 150%;
+  color: aliceblue;
 }
