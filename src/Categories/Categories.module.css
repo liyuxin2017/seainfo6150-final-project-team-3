@@ -12,4 +12,11 @@
   color: aliceblue;
   line-height: 2em;
   text-decoration: none;
+  font-size: 120%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
 }
