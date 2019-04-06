@@ -2,7 +2,7 @@
   color: aliceblue;
   background: rgb(35, 34, 99);
   min-width: max-content;
-  height: -webkit-fill-available;
+  grid-row: 2 / 4;
 }
 
 .link {
