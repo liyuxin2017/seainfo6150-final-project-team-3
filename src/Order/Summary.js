@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 import TotalPrice from './TotalPrice';
+import styles from './Summary.module.css';
 
 class Summary extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class Summary extends Component {
           selectedOptions={selectedOptions}
         />
 
-        <fieldset>
+        <fieldset className={styles.submit}>
           <input type='submit' value='Submit order' />
         </fieldset>
       </form>

@@ -37,6 +37,7 @@ class ProductDetail extends PureComponent {
               <Link
                 to='/order/1'
                 onClick={selectProductId.bind(null, product.id)}
+                className={styles.link}
               >
                 Order
               </Link>

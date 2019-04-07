@@ -40,22 +40,29 @@ class OrderStep2 extends Component {
             type='text'
             name='userLastName'
             onChange={setUserInfo.bind(null, 'userLastName')}
+            required
           />
           First Name:{' '}
           <input
             type='text'
             name='userFirstName'
             onChange={setUserInfo.bind(null, 'userFirstName')}
+            required
           />
           <br />
           Date of birth:{' '}
-          <input type='date' onChange={setUserInfo.bind(null, 'date')} />
+          <input
+            type='date'
+            onChange={setUserInfo.bind(null, 'date')}
+            required
+          />
           <br />
           Phone Number:{' '}
           <input
             type='text'
             name='phoneNumber'
             onChange={setUserInfo.bind(null, 'phoneNumber')}
+            required
           />
           <br />
           Cell Number:{' '}
@@ -72,6 +79,7 @@ class OrderStep2 extends Component {
             type='text'
             name='address'
             onChange={setUserInfo.bind(null, 'address')}
+            required
           />
           <br />
           City:{' '}
@@ -79,18 +87,21 @@ class OrderStep2 extends Component {
             type='text'
             name='city'
             onChange={setUserInfo.bind(null, 'city')}
+            required
           />
           State:{' '}
           <input
             type='text'
             name='state'
             onChange={setUserInfo.bind(null, 'state')}
+            required
           />
           Zip code:{' '}
           <input
             type='text'
             name='zipCode'
             onChange={setUserInfo.bind(null, 'zipCode')}
+            required
           />
           <br />
           Shipment address:
@@ -98,12 +109,14 @@ class OrderStep2 extends Component {
             type='radio'
             name='shipmentAddress'
             onClick={this.toggleShipmentAddress}
+            required
           />
           Same as Billing address
           <input
             type='radio'
             name='shipmentAddress'
             onClick={this.toggleShipmentAddress}
+            required
           />
           Enter new address
           <br />
