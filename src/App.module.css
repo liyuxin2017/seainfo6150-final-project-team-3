@@ -12,7 +12,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 12em auto;
+  grid-template-columns: 13em auto;
   grid-template-rows: 5em 12em auto;
 }
 
