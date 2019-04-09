@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ProductDetail.module.css';
 
 class ProductDetail extends PureComponent {
   componentDidMount() {
@@ -8,46 +7,34 @@ class ProductDetail extends PureComponent {
   }
 
   render() {
-    const { categories, product, selectProductId } = this.props;
+    const {
+      categories,
+      product,
+      selectProductId
+    } = this.props;
 
     const category = categories[product.categoryId];
     return (
       <div>
         <span>{product.title}</span>
-        <div className={styles.productInfo}>
-          <img src={category.img.lg} className={styles.image} />
+        <img src={category.img.lg} />
+<div></div>
+        {/* start order button */}
+          <span> ID:{product.id}</span><br></br>
+          <span> Name:{product.title}</span><br></br>
+          <span> Year:{product.year}</span><br></br>
+          <span> Available:{product.available} </span><br></br>
+          <span> Sale Price:{product.price}</span><br></br>
+          <span> Price:{product.price}</span><br></br>
+          <span> Description:{product.description}</span><br></br>
 
-          <div className={styles.productTextInfo}>
-            {/* start order button */}
-            <span> ID: {product.id}</span>
-            <br />
-            <span> Name: {product.title}</span>
-            <br />
-            <span> Year: {product.year}</span>
-            <br />
-            <span> Available: {product.available} </span>
-            <br />
-            <span> Sale Price: {product.price}</span>
-            <br />
-            <span> Price: {product.price}</span>
-            <br />
-            <span> Description: {product.description}</span>
-            <br />
-            <div className={styles.button}>
-              <Link
-                to='/order/1'
-                onClick={selectProductId.bind(null, product.id)}
-                className={styles.link}
-              >
-                Order
-              </Link>
-              {/* end order button */}
-            </div>
-          </div>
-        </div>
+        <Link to="/order/1" onClick={selectProductId.bind(null, product.id)}>Order</Link>
+        {/* end order button */}
+
       </div>
     );
   }
+
 }
 
 export default ProductDetail;
