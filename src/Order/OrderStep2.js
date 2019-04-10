@@ -32,17 +32,20 @@ class OrderStep2 extends Component {
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/summary' />
     ) : (
+
       <form onSubmit={this.handleSubmit.bind(this)}>
+      <div className={styles.container}>
         <fieldset className={styles.textFields}>
-          <legend>Personal Information</legend>
-          Last Name:{' '}
+          <legend className={styles.header}>Personal Information</legend>
+            <div className={styles.content}>
+          Last Name{' '}
           <input
             type='text'
             name='userLastName'
             onChange={setUserInfo.bind(null, 'userLastName')}
             required
           />
-          First Name:{' '}
+          First Name{' '}
           <input
             type='text'
             name='userFirstName'
@@ -50,14 +53,14 @@ class OrderStep2 extends Component {
             required
           />
           <br />
-          Date of birth:{' '}
+          Date of birth{' '}
           <input
             type='date'
             onChange={setUserInfo.bind(null, 'date')}
             required
           />
           <br />
-          Phone Number:{' '}
+          Phone Number{' '}
           <input
             type='text'
             name='phoneNumber'
@@ -65,15 +68,17 @@ class OrderStep2 extends Component {
             required
           />
           <br />
-          Cell Number:{' '}
+          Cell Number{' '}
           <input
             type='text'
             name='cellNumber'
             onChange={setUserInfo.bind(null, 'cellNumber')}
           />
+          </div>
         </fieldset>
         <fieldset className={styles.textFields}>
-          <legend>Address Information</legend>
+          <legend className={styles.header}>Address Information</legend>
+          <div className={styles.content}>
           Billing Address:{' '}
           <input
             type='text'
@@ -82,21 +87,21 @@ class OrderStep2 extends Component {
             required
           />
           <br />
-          City:{' '}
+          City{' '}
           <input
             type='text'
             name='city'
             onChange={setUserInfo.bind(null, 'city')}
             required
           />
-          State:{' '}
+          State{' '}
           <input
             type='text'
             name='state'
             onChange={setUserInfo.bind(null, 'state')}
             required
           />
-          Zip code:{' '}
+          Zip code{' '}
           <input
             type='text'
             name='zipCode'
@@ -120,7 +125,7 @@ class OrderStep2 extends Component {
           />
           Enter new address
           <br />
-          Address:{' '}
+          Address{' '}
           <input
             type='text'
             name='address'
@@ -131,7 +136,7 @@ class OrderStep2 extends Component {
             onChange={setUserInfo.bind(null, 'address')}
           />
           <br />
-          City:{' '}
+          City{' '}
           <input
             type='text'
             name='city'
@@ -141,7 +146,7 @@ class OrderStep2 extends Component {
             }}
             onChange={setUserInfo.bind(null, 'city')}
           />
-          State:{' '}
+          State{' '}
           <input
             type='text'
             name='state'
@@ -151,7 +156,7 @@ class OrderStep2 extends Component {
             }}
             onChange={setUserInfo.bind(null, 'state')}
           />
-          Zip code:{' '}
+          Zip code{' '}
           <input
             type='text'
             name='zipCode'
@@ -161,7 +166,9 @@ class OrderStep2 extends Component {
             }}
             onChange={setUserInfo.bind(null, 'zipCode')}
           />
+          </div>
         </fieldset>
+        </div>
 
         <fieldset className={styles.submit}>
           <input type='submit' value='Go to summary' />

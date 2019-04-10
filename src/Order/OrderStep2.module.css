@@ -22,6 +22,7 @@
 	font-size: 25px;
 	font-weight: bold;
 	padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .content {
@@ -29,25 +30,25 @@
 	font-style: italic;
 	font-size: 20px;
 	padding-bottom: 20px;
-	float:left;
+	
 	
 }
 
 input[type=text] {
- 	width:100%;
+ 	width:auto;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   background-color: aliceblue;
-  float:right;
+  
 }
 input[type=date] {
- 	width:100%;
+ 	width:auto;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   background-color: aliceblue;
-  float: right;
+ 
 }
 
 
@@ -56,28 +57,21 @@ input[type=text] : focus {
 }
 
 .container {
+  width:60%;
+  height:auto;
   border-radius: 5px;
   padding: 20px;
-  margin-left: 50px;
+  margin-left: 70px;
   margin-right: 50px;
   padding-left: 50px;
   padding-right: 50px;
 
-}
-.listright{
-	float:right;
 
 }
-.listleft{
-	float:left;
+
+@media-query {
+  
 }
 
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=text] {
-    width: 100%;
-    margin-top: 0;
-  }
-  }
-.clear {
-    clear: both;
-}
+
+
