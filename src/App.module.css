@@ -45,10 +45,12 @@
 }
 
 .header {
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 150%;
   color: aliceblue;
-  font-family: 'Gill Sans', sans-serif;
+  font-family: "Times New Roman", sans-serif;
+  font-style: italic;
+  text-underline-position: 
 }
 
 @media (max-width: 480px) {
