@@ -1,13 +1,13 @@
 .submit {
   text-align: right;
-  
+
   font-size: 2em;
   border: none;
 }
 .submit input {
   background-color: rgb(21, 21, 71);
-  font-family: "Times New Roman", Times, serif;
-  
+  font-family: 'Times New Roman', Times, serif;
+
   color: aliceblue;
   font-size: 20px;
   border-radius: 1em;
@@ -17,32 +17,31 @@
 }
 
 .header {
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	font-size: 25px;
-	font-weight: bold;
-	padding-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
 .content {
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	font-size: 20px;
-	padding-bottom: 20px;
-	float:left;
-	
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  padding-bottom: 20px;
+  float: left;
 }
 
-input[type=text] {
- 	width:100%;
+input[type='text'] {
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   background-color: aliceblue;
-  float:right;
+  float: right;
 }
-input[type=date] {
- 	width:100%;
+input[type='date'] {
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -50,9 +49,8 @@ input[type=date] {
   float: right;
 }
 
-
-input[type=text] : focus {
- border: 3px solid #555;
+input[type='text'] :focus {
+  border: 3px solid #555;
 }
 
 .container {
@@ -62,22 +60,22 @@ input[type=text] : focus {
   margin-right: 50px;
   padding-left: 50px;
   padding-right: 50px;
-
 }
-.listright{
-	float:right;
-
+.listright {
+  float: right;
 }
-.listleft{
-	float:left;
+.listleft {
+  float: left;
 }
 
 @media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=text] {
+  .col-25,
+  .col-75,
+  input[type='text'] {
     width: 100%;
     margin-top: 0;
   }
-  }
+}
 .clear {
-    clear: both;
+  clear: both;
 }
