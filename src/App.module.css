@@ -29,6 +29,7 @@
 .mainContainer {
   grid-column: 2 / 3;
   grid-row: 3 / 4;
+  padding-left: 2em;
 }
 
 .logoContainer {
@@ -41,6 +42,8 @@
   font-size: 200%;
   color: aliceblue;
   font-family: cursive;
+  padding-left: 1em;
+  margin-top: 2em;
 }
 
 .header {

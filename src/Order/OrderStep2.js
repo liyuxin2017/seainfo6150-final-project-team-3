@@ -19,11 +19,21 @@ class OrderStep2 extends Component {
 
   componentDidMount() {}
 
-  toggleShipmentAddress = () => {
-    this.addressText.disabled = !this.addressText.disabled;
-    this.cityText.disabled = !this.cityText.disabled;
-    this.stateText.disabled = !this.stateText.disabled;
-    this.zipText.disabled = !this.zipText.disabled;
+  enableShipmentAddress = () => {
+    this.addressText.disabled = false;
+    this.cityText.disabled = false;
+    this.stateText.disabled = false;
+    this.zipText.disabled = false;
+  };
+  disableShipmentAddress = () => {
+    this.addressText.disabled = true;
+    this.addressText.style = 'background-color:lightgrey;';
+    this.cityText.disabled = true;
+    this.cityText.style = 'background-color:lightgrey;';
+    this.stateText.disabled = true;
+    this.stateText.style = 'background-color:lightgrey;';
+    this.zipText.disabled = true;
+    this.zipText.style = 'background-color:lightgrey;';
   };
 
   render() {
@@ -108,14 +118,14 @@ class OrderStep2 extends Component {
           <input
             type='radio'
             name='shipmentAddress'
-            onClick={this.toggleShipmentAddress}
+            onClick={this.disableShipmentAddress}
             required
           />
           Same as Billing address
           <input
             type='radio'
             name='shipmentAddress'
-            onClick={this.toggleShipmentAddress}
+            onClick={this.enableShipmentAddress}
             required
           />
           Enter new address

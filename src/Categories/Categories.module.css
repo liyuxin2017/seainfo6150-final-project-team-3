@@ -1,17 +1,19 @@
 .container {
-  color: aliceblue;
+  color: white;
   background: rgb(18, 18, 61);
   padding-left: 1em;
   padding-right: 1em;
   min-width: max-content;
   height: -webkit-fill-available;
-  font-family: sans-serif;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+   font-size: 20px;
 }
 
 .link {
   color: aliceblue;
   line-height: 2em;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 120%;
 }
 

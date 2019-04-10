@@ -45,7 +45,7 @@ let App = props => (
           Products
         </Link>
         <Link to='/About' className={styles.header}>
-          Abouts
+          About
         </Link>
         <Link to='/Contact' className={styles.header}>
           Contact

@@ -42,16 +42,17 @@ class OrderStep1 extends Component {
         const category = categories[selectedProductCategoryId];
         return (
             <div className={styles.container}>
-                <div className={styles["left-half"]}>
-                    <img className={styles.image} src={category.img.lg} />
-                </div>
-                <div className={styles["right-half"]}>
+                
+                <div className={styles["top-panel"]}>
                     {
-                        <PowerOptions selectedProduct={selectedProductCategoryId} options={this.props.options}/>
+                        <PowerOptions className={styles["panel"]} selectedProduct={selectedProductCategoryId} options={this.props.options}/>
                     }
                     {<InteriorOptions selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
                     {<ExteriorOptions selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
                     {<PremiumFeatures selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
+                </div>
+                <div className={styles["bottom-panel"]}>
+                    <img className={styles.image} src={category.img.lg} />
                 </div>
             </div>
 
@@ -63,8 +64,17 @@ class OrderStep1 extends Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
         <fieldset>
           <input type="submit" value="Go to step 2" />
-        </fieldset>,
+        </fieldset>
       </form>
+      /*<div>
+        <Link
+            to='/order/2'
+            onClick={selectProductCategoryId.bind(null, product.id)}
+                
+            >
+          Order
+        </Link>
+       </div>*/
     )
   }
 }

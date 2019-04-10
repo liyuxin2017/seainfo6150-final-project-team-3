@@ -5,7 +5,16 @@
 }
 .submit input {
   background-color: rgb(21, 21, 71);
+  font-family: "Times New Roman", Times, serif;
   color: aliceblue;
-  font-size: 1em;
+  font-size: 20px;
   border-radius: 1em;
+}
+.display {
+	display:table;
+	list-style: none;
+}
+
+.check{
+	
 }
