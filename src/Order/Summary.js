@@ -55,7 +55,7 @@ class Summary extends Component {
         </ul>
 
         {/* This will iterate through all the user info so you can see what the user entered. */}
-        <ul>
+        <ul className={styles.display}>
           {Object.keys(userInfo).map(info => (
             <li key={info}>
               {info}: {userInfo[info]}

@@ -16,7 +16,7 @@ const OptionsSeperator = ({props, allowedValues}) => (
             if(!option.id.startsWith("num") &&
                 !option.id.startsWith("has") &&
                 option.id.toLowerCase().endsWith("color")) {
-                let colors = ["#ffff", "#bbbb", "#aaaa" , "#ccccc"];
+                let colors = ["white", "black", "silver" , "grey"];
                 if(option.requirements) {
                     Object.entries(option.requirements).forEach(([key, val]) => {
                         if(key == props.selectedProduct) {

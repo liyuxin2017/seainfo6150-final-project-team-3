@@ -1,26 +1,33 @@
 .container {
-    display: table;
-    width: 100%;
-    box-sizing: border-box;
+    width: auto;
+    height: auto;
+   
 }
 
-.left-half {
-    position: relative;
-    left: 0px;
-    width: 25%;
+.bottom-panel {
+    position: auto;
+    width: auto;
     box-sizing: border-box;
     display: inline-block;
+
 }
 
-.right-half {
+.top-panel {
     position: relative;
-    right: 0px;
-    width: 65%;
-    box-sizing: border-box;
-    display: inline-block;
+    width: auto;
+    padding-left: 10%;
+    display: inline-flex;
 }
 
 .image {
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.panel {
+    background-color: red;
+    width : 50px;
+    padding-left: 2px;
+    padding-right: 2px;
+
 }
