@@ -4,7 +4,6 @@
     <list default="true" id="e77283ec-c879-4c3e-a261-f2360123e5ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Order/OrderStep1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order/OrderStep1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductDetail/ProductDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductDetail/ProductDetail.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,17 +50,18 @@
     <session id="-849617921">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="114" />
-          <entry key="js" value="5460" />
+          <entry key="js" value="5529" />
           <entry key="json" value="140" />
         </counts>
       </usages-collector>
@@ -69,34 +69,34 @@
         <counts>
           <entry key="CSS" value="114" />
           <entry key="JSON" value="140" />
-          <entry key="JavaScript" value="5460" />
+          <entry key="JavaScript" value="5529" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="9" />
+          <entry key="css" value="10" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="33" />
+          <entry key="js" value="34" />
           <entry key="json" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="9" />
+          <entry key="CSS" value="10" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="11" />
-          <entry key="JavaScript" value="33" />
+          <entry key="JavaScript" value="34" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+            <state relative-caret-position="248">
+              <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="15" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -104,7 +104,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Order/OrderStep2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="11" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/InteriorOptions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -117,9 +129,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.module.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PremiumFeatures.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
+            <state relative-caret-position="323">
               <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -131,7 +152,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/OptionsSeperator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2146">
+            <state relative-caret-position="204">
               <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -143,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.module.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="323">
+              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -152,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="238">
               <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -176,7 +197,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/options.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
+            <state relative-caret-position="255">
               <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
             </state>
           </provider>
@@ -210,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/ProductDetail/ProductDetail.js" />
         <option value="$PROJECT_DIR$/src/Order/orderStep1/seperator.js" />
         <option value="$PROJECT_DIR$/src/Order/OrderStep1.module.css" />
-        <option value="$PROJECT_DIR$/src/Order/OrderStep1.js" />
         <option value="$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.module.css" />
         <option value="$PROJECT_DIR$/src/data/options.json" />
         <option value="$PROJECT_DIR$/src/Order/orderStep1/OptionsSeperator.module.css" />
@@ -219,6 +239,7 @@
         <option value="$PROJECT_DIR$/src/Order/orderStep1/PremiumFeatures.js" />
         <option value="$PROJECT_DIR$/src/Order/orderStep1/ExteriorOptions.js" />
         <option value="$PROJECT_DIR$/src/Order/orderStep1/InteriorOptions.js" />
+        <option value="$PROJECT_DIR$/src/Order/OrderStep1.js" />
       </list>
     </option>
   </component>
@@ -325,13 +346,6 @@
               <item name="seainfo6150-final-project-team-3" type="b2602c69:ProjectViewProjectNode" />
               <item name="seainfo6150-final-project-team-3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Order" type="462c0819:PsiDirectoryNode" />
-              <item name="orderStep1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seainfo6150-final-project-team-3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seainfo6150-final-project-team-3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ProductDetail" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -403,12 +417,13 @@
       <workItem from="1553719604824" duration="5644000" />
       <workItem from="1553727264825" duration="452000" />
       <workItem from="1554261923411" duration="10346000" />
-      <workItem from="1554665288324" duration="35485000" />
+      <workItem from="1554665288324" duration="38915000" />
+      <workItem from="1554930707957" duration="1639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54602000" />
+    <option name="totallyTimeSpent" value="59671000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -423,14 +438,13 @@
     <frame x="-6" y="-6" width="1292" height="692" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4918478" visible="true" weight="0.25596184" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48998177" visible="true" weight="0.25596184" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.5081522" side_tool="true" visible="true" weight="0.25596184" />
+      <window_info active="true" id="npm" order="2" sideWeight="0.5100182" side_tool="true" visible="true" weight="0.25596184" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32969034" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969034" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -439,6 +453,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.24954462" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -542,24 +557,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2788">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Order/OrderStep2.module.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -573,16 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/OptionsSeperator.module.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -590,33 +581,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/options.json">
+    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/OptionsSeperator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2146">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="248">
+          <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="15" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.js">
+    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="748">
+          <caret line="44" column="11" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/InteriorOptions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -624,10 +611,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Order/OrderStep1.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PremiumFeatures.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
+        <state relative-caret-position="323">
           <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/OptionsSeperator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/PowerOptions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -644,13 +665,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Order/orderStep1/InteriorOptions.js">
+    <entry file="file://$PROJECT_DIR$/src/data/options.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>

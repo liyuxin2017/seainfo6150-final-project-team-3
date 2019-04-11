@@ -8,8 +8,7 @@ import PremiumFeatures from "./orderStep1/PremiumFeatures";
 import styles from "./OrderStep1.module.css";
 
 class OrderStep1 extends Component {
-  constructor(props) {
-
+    constructor(props) {
     console.log("Check 1");
     console.log(props);
     super(props);
@@ -36,11 +35,13 @@ class OrderStep1 extends Component {
       console.log("Check 2 " + selectedProductId +" " + categories);
     let selectedProductCategoryId = null;
     const selectedProduct = this.props.products[selectedProductId];
+
+    let opt;
     if (selectedProduct) {
         selectedProductCategoryId = selectedProduct.categoryId;
         console.log(this.props.options);
         const category = categories[selectedProductCategoryId];
-        return (
+        opt = (
             <div className={styles.container}>
                 
                 <div className={styles["top-panel"]}>
@@ -62,19 +63,12 @@ class OrderStep1 extends Component {
       ? (<Redirect to="/order/2" />)
       : (
       <form onSubmit={this.handleSubmit.bind(this)}>
+          {opt}
         <fieldset>
           <input type="submit" value="Go to step 2" />
         </fieldset>
       </form>
-      /*<div>
-        <Link
-            to='/order/2'
-            onClick={selectProductCategoryId.bind(null, product.id)}
-                
-            >
-          Order
-        </Link>
-       </div>*/
+
     )
   }
 }
