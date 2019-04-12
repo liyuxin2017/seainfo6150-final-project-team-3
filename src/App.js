@@ -34,7 +34,7 @@ let App = props => (
     <div className={styles.container}>
       <div className={styles.logoContainer}>
         <Link to='/' className={styles.logo}>
-          VehicleMart
+          Vehicle<br/>Mart
         </Link>
       </div>
       <div className={styles.headerContainer}>
@@ -50,6 +50,11 @@ let App = props => (
         <Link to='/Contact' className={styles.header}>
           Contact
         </Link>
+      </div>
+
+      {/*information*/}
+      <div className={styles.informationContainer}>
+        <img src="/assets/img/information/information.png" className={styles.image} alt="information"/>
       </div>
 
       {/* start list of product category links */}

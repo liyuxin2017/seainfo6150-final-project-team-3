@@ -1,8 +1,6 @@
 .container {
   color: white;
   background: rgb(18, 18, 61);
-  padding-left: 1em;
-  padding-right: 1em;
   min-width: max-content;
   height: -webkit-fill-available;
   font-family: "Times New Roman", Times, serif;

@@ -28,6 +28,10 @@ class Summary extends Component {
       userInfo
     } = this.props;
 
+
+    if (!selectedProductId) {
+      return <div>Please choose a product first!</div>;
+    }
     console.log(
       'selectedOptions: ' +
         selectedOptions +
