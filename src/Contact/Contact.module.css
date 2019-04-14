@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  margin: 1em;
+}
+.leftField {
+  grid-column: 1;
+  display: flex;
+}
+
+.rightField {
+  grid-column: 2;
+}
+
+.Message {
+  height: 25em;
+}
