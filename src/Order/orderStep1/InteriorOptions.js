@@ -21,8 +21,6 @@ class InteriorOptions extends React.Component {
             'hasGloveBox',
             'radioType',
             'hasRadio',
-            'hasTintedWindows',
-            'numExhausts',
             'hasGPS',
             'hubcapsMaterial',
             'dashboardLightsColor',

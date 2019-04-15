@@ -17,7 +17,6 @@ class PremiumFeatures extends React.Component {
             'hasTrunkMonkey',
             'hoodOrnament',
             'hasHoodOrnament',
-            'spareTire',
 
         ];
     }

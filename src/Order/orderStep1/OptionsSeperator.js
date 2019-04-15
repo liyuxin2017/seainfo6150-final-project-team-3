@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from "../OrderStep1.module.css";
+import styles from "./OptionsSeperator.module.css";
 
 
 const OptionsSeperator = ({props, allowedValues}) => (
         Object.values(props.options).map(option => {
+            const colorDisplay = (color) => ({
+                backgroundColor: color,
+                color: color
+            });
+            let booleanHasImage = false;
         if(allowedValues.indexOf(option.id) !== -1) {
             let optionItems = null;
             if(option.values) {
@@ -25,7 +30,11 @@ const OptionsSeperator = ({props, allowedValues}) => (
                     });
                 }
                 optionItems = Object.values(colors).map((val) => {
-                        return <option value={val}>{val}</option>;
+                    console.log("Setting color");
+                    console.log(val);
+                        return <option value={val} style={colorDisplay(val)}>
+                            {val}
+                            </option>;
                     }
                 );
             }
@@ -43,32 +52,26 @@ const OptionsSeperator = ({props, allowedValues}) => (
             }
 
             if(option.id == 'hoodOrnament') {
-                let types = [];
-                Object.entries(option.values).forEach(([key, val]) => {
-                        types = val;
-                    }
-                );
-
-                optionItems = Object.values(types).map((val) => {
-                        return <option value={val.id}>
-                            {val.img}
-                            {/*<img className={styles.image} src={val.img} />*/}
-                        </option>;
+                booleanHasImage = true;
+                optionItems = Object.values(option.values).map((val) => {
+                        return <div className={styles.option_image}>
+                            <img className={styles.option_image} src={val.img} alt={val.id} />
+                        </div>;
                     }
                 );
             }
 
             if(option.id == 'trunkMonkey') {
+                booleanHasImage = true;
                 optionItems = Object.values(option.values).map((val) => {
-                        return <option value={val.id}>
-                            {val.img.sm}
-                            {/*<img className={styles.image} src={val.img.sm} />*/}
-                        </option>;
+                    return <div className={styles.option_image}>
+                            <img className={styles.option_image} src={val.img.sm} alt={val.id} />
+                        </div>;
                     }
                 );
             }
 
-            if (option.id.startsWith("num")) {
+            if (option.id.startsWith("num") || option.id == "monogram") {
                 let minNumber = 1;
                 let maxNumber = 10;
                 if(option.minimumNum) {
@@ -102,7 +105,7 @@ const OptionsSeperator = ({props, allowedValues}) => (
                 }
             }
 
-            if(option.id.startsWith(" ")) {
+            if(option.id.startsWith("has")) {
                 let radio_flag = true;
                 let default_val = null;
                 if(option.requirements) {
@@ -115,22 +118,27 @@ const OptionsSeperator = ({props, allowedValues}) => (
                 }
                 if(radio_flag) {
                     return <div>
-                        {option.name}
-                        True<input type="radio" name={"true"} value="true"/>
-                        False<input type="radio" name={"false"} value="false"/>
+                        <p className={styles.main_text}>{option.name} </p>
+                        <input type="radio" name={option.name} value={option.name+"true"} checked/> True
+                        <input type="radio" name={option.name} value={option.name+"false"}/> False
                     </div>
                 } else {
                     return <div>
-                        {option.name}
+                        <p className={styles.main_text}>{option.name}</p>
                         {default_val.toString()}
                     </div>
                 }
+            } else if (booleanHasImage) {
+                return <div>
+                    <p className={styles.main_text}>{option.name}</p>
+                    {optionItems}
+                    </div>;
             }
             else {
-                return <div id={option.name}>{option.name}
+                return <div id={option.name} > <p className={styles.main_text}>{option.name} </p>
                     {
                         optionItems != null ?
-                            <select>
+                            <select className={styles.select_width}>
                                 {optionItems}
                             </select>
                             : null
