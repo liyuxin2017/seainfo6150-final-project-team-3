@@ -1,18 +1,19 @@
 .productInfo {
   font-family: "Times New Roman", sans-serif;
   font-style: italic;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
-  
+  margin-left: 20em;
   line-height: 1.8em;
-  float:right;
+  
 }
 
 .image {
   width: 30em;
   height: 22.5em;
   margin: 0;
-  float: left;
+  
 }
 
 .button {
@@ -27,7 +28,4 @@
   border-radius: 1em;
   text-decoration: none;
   padding: 0 0.5em;
-}
-.clear{
-  clear:both;
 }
