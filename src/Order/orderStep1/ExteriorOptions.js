@@ -15,13 +15,8 @@ class ExteriorOptions extends React.Component {
         this.allowedValues = [
             'monogram',
             'hasMonogrammedSteeringWheelCover',
-            'hoodOrnament',
-            'hasHoodOrnament',
             'hasGloveBox',
             'hasTintedWindows',
-            'hubcapsMaterial',
-            'dashboardLightsColor',
-            'dashboardColor',
             'color',
         ];
     }
