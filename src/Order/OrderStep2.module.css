@@ -12,9 +12,6 @@
   font-size: 20px;
   border-radius: 1em;
 }
-.textFields {
-  line-height: 2em;
-}
 
 .header {
   font-family: 'Times New Roman', Times, serif;
@@ -32,25 +29,26 @@
   float: left;
 }
 
-input[type='text'] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: aliceblue;
-  float: right;
+.row {
+  display: flex;
+  flex-direction: row;
+  line-height: 2em;
 }
-input[type='date'] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: aliceblue;
-  float: right;
+
+.col {
+  flex: auto;
+}
+
+input[type='text'] {
+  line-height: 2em;
 }
 
 input[type='text'] :focus {
   border: 3px solid #555;
+}
+
+input {
+  height: 4em;
 }
 
 .container {
@@ -61,11 +59,28 @@ input[type='text'] :focus {
   padding-left: 50px;
   padding-right: 50px;
 }
-.listright {
-  float: right;
+
+.error {
+  color: red;
+  margin: 0;
 }
-.listleft {
-  float: left;
+
+.falseInput {
+  border: 1px solid red;
+  background-color: rgb(250, 185, 185);
+}
+
+label {
+  display: block;
+  color: grey;
+  font: 0.5em;
+  position: absolute;
+  margin-top: 0.5em;
+  z-index: 10;
+}
+label :hover {
+  color: green;
+  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 600px) {
@@ -76,6 +91,6 @@ input[type='text'] :focus {
     margin-top: 0;
   }
 }
-.clear {
-  clear: both;
+.test {
+  line-height: 80px;
 }
