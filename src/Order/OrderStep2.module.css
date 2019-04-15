@@ -1,13 +1,13 @@
 .submit {
   text-align: right;
-  
+
   font-size: 2em;
   border: none;
 }
 .submit input {
   background-color: rgb(21, 21, 71);
-  font-family: "Times New Roman", Times, serif;
-  
+  font-family: 'Times New Roman', Times, serif;
+
   color: aliceblue;
   font-size: 20px;
   border-radius: 1em;
@@ -17,6 +17,7 @@
 }
 
 .header {
+
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	font-size: 25px;
@@ -36,6 +37,24 @@
 
 input[type=text] {
  	width:auto;
+
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.content {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  padding-bottom: 20px;
+  float: left;
+}
+
+input[type='text'] {
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -44,6 +63,11 @@ input[type=text] {
 }
 input[type=date] {
  	width:auto;
+  float: right;
+}
+input[type='date'] {
+  width: 100%;
+
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -51,9 +75,8 @@ input[type=date] {
  
 }
 
-
-input[type=text] : focus {
- border: 3px solid #555;
+input[type='text'] :focus {
+  border: 3px solid #555;
 }
 
 .container {
@@ -67,11 +90,10 @@ input[type=text] : focus {
   padding-right: 50px;
 
 
+
 }
 
-@media-query {
-  
-}
+
 
 
 

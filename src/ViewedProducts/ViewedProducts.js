@@ -5,7 +5,7 @@ import styles from './ViewedProducts.module.css';
 
 const ViewedProducts = ({ categories, products }) => {
   if (!products.length) {
-    return null;
+    return <div className={styles.defaultText}>Your five recent viewed vehicles</div>
   }
 
   const viewedProductsPage = products.slice(0,5).map((product, index) => {

@@ -14,8 +14,6 @@ class PowerOptions extends React.Component {
 
         this.allowedValues = [
             'engine',
-            'hoodOrnament',
-            'hasHoodOrnament',
             'spareTire',
             'numExhausts',
         ];
