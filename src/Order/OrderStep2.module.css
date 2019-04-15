@@ -1,3 +1,7 @@
+.container {
+  margin: 1em;
+}
+
 .submit {
   text-align: right;
 
@@ -10,7 +14,7 @@
 
   color: aliceblue;
   font-size: 20px;
-  border-radius: 1em;
+  border-radius: 3em;
 }
 
 .header {
@@ -33,14 +37,17 @@
   display: flex;
   flex-direction: row;
   line-height: 2em;
+  margin-top: 1em;
 }
 
-.col {
+.labelInput {
   flex: auto;
+  margin: 0 1em;
 }
 
-input[type='text'] {
-  line-height: 2em;
+.shipmentAddress {
+  vertical-align: text-bottom;
+  padding: 1.1em 2px;
 }
 
 input[type='text'] :focus {
@@ -49,6 +56,8 @@ input[type='text'] :focus {
 
 input {
   height: 4em;
+  font-size: 1em;
+  width: -webkit-fill-available;
 }
 
 .container {
@@ -70,17 +79,11 @@ input {
   background-color: rgb(250, 185, 185);
 }
 
-label {
+label:not(.shipmentAddress) {
   display: block;
   color: grey;
-  font: 0.5em;
+  line-height: initial;
   position: absolute;
-  margin-top: 0.5em;
-  z-index: 10;
-}
-label :hover {
-  color: green;
-  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 600px) {
