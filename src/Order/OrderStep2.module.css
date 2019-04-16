@@ -1,3 +1,10 @@
+.container {
+  margin: 1em;
+}
+
+fieldset {
+  width: 100%;
+}
 .submit {
   text-align: right;
 
@@ -9,91 +16,67 @@
   font-family: 'Times New Roman', Times, serif;
 
   color: aliceblue;
-  font-size: 20px;
-  border-radius: 1em;
+  border-radius: 3em;
 }
-.textFields {
+
+.row {
+  display: flex;
+  flex-direction: row;
   line-height: 2em;
+  margin-top: 1em;
 }
 
-.header {
-
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	font-size: 25px;
-	font-weight: bold;
-	padding-bottom: 10px;
-  padding-top: 10px;
+.labelInput {
+  flex: auto;
+  margin: 0 1em;
 }
 
-.content {
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	font-size: 20px;
-	padding-bottom: 20px;
-	
-	
+.shipmentAddress {
+  vertical-align: text-bottom;
+  padding: 1.1em 2px;
 }
 
-input[type=text] {
- 	width:auto;
-
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 25px;
-  font-weight: bold;
-  padding-bottom: 10px;
-}
-
-.content {
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 20px;
-  padding-bottom: 20px;
-  float: left;
-}
-
-input[type='text'] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: aliceblue;
-  
-}
-input[type=date] {
- 	width:auto;
-  float: right;
-}
-input[type='date'] {
-  width: 100%;
-
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: aliceblue;
- 
-}
-
-input[type='text'] :focus {
-  border: 3px solid #555;
+input {
+  height: 4em;
+  width: -webkit-fill-available;
 }
 
 .container {
-  width:60%;
-  height:auto;
+  width: 60%;
+  height: auto;
   border-radius: 5px;
   padding: 20px;
   margin-left: 70px;
   margin-right: 50px;
   padding-left: 50px;
   padding-right: 50px;
-
-
-
 }
 
+.error {
+  color: red;
+  margin: 0;
+}
 
+.falseInput {
+  border: 1px solid red;
+  background-color: rgb(250, 185, 185);
+}
 
+label:not(.shipmentAddress) {
+  display: block;
+  color: grey;
+  line-height: initial;
+  position: absolute;
+}
 
-
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type='text'] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.test {
+  line-height: 80px;
+}
