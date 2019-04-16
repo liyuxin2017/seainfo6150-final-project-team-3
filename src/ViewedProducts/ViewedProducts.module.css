@@ -26,8 +26,22 @@
 @media (max-width: 480px) {
   .container {
     grid-column: 1 / 3;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
     display: flex;
     overflow-x: scroll;
+  }
+
+  .image {
+    height: 95%;
+    width: 10em;
+    margin-top: 1%;
+  }
+
+  .defaultText {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    color: lightGray;
+    font-size: 1.5em;
+    text-align: center;
   }
 }
