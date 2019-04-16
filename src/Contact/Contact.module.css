@@ -18,5 +18,8 @@
 }
 
 .Message {
-  height: 25em;
+  height: 92%;
+  width: 98%;
+  border-color: darkgray;
+  background-color: aliceblue;
 }
