@@ -1,24 +1,20 @@
 .container {
-  margin: 1em;
+  width: 60%;
+  height: auto;
+  border-radius: 5px;
+  margin-left: 20%;
 }
 
 fieldset {
-  width: 100%;
-}
-.submit {
-  text-align: right;
-
-  font-size: 2em;
-  border: none;
-}
-.submit input {
-  background-color: rgb(21, 21, 71);
-  font-family: 'Times New Roman', Times, serif;
-
-  color: aliceblue;
-  border-radius: 3em;
+  display: inline;
+  min-width: 600px;
+  margin-top: 5%;
 }
 
+input:not(.submit) {
+  height: 4em;
+  width: -webkit-fill-available;
+}
 .row {
   display: flex;
   flex-direction: row;
@@ -33,23 +29,7 @@ fieldset {
 
 .shipmentAddress {
   vertical-align: text-bottom;
-  padding: 1.1em 2px;
-}
-
-input {
-  height: 4em;
-  width: -webkit-fill-available;
-}
-
-.container {
-  width: 60%;
-  height: auto;
-  border-radius: 5px;
-  padding: 20px;
-  margin-left: 70px;
-  margin-right: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 1em 2px;
 }
 
 .error {
@@ -63,20 +43,31 @@ input {
 }
 
 label:not(.shipmentAddress) {
+  margin-left: 0.5em;
   display: block;
   color: grey;
   line-height: initial;
   position: absolute;
 }
 
-@media screen and (max-width: 600px) {
-  .col-25,
-  .col-75,
-  input[type='text'] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
 .test {
   line-height: 80px;
+}
+
+input[type='radio'] {
+  margin: 0.5em 0.5em;
+}
+
+.submit {
+  border: none;
+  text-align: center;
+  margin: 1em auto;
+  padding: 0.2em 1em;
+}
+
+.submit input {
+  background-color: rgb(21, 21, 71);
+  color: aliceblue;
+  border-radius: 3em;
+  font-size: 2em;
 }
