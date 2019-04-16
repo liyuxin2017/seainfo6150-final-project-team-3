@@ -25,7 +25,8 @@ class Summary extends Component {
       products,
       selectedOptions,
       selectedProductId,
-      userInfo
+      userInfo,
+      categories
     } = this.props;
     console.log('Summary', this.props);
 
@@ -82,6 +83,7 @@ class Summary extends Component {
 
         <fieldset className={styles.submit}>
           <input type='submit' value='Submit order' />
+          <button>print</button>
         </fieldset>
       </form>
     );
