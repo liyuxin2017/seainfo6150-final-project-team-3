@@ -11,21 +11,25 @@ const Contact = () => (
       <input
         type='text'
         id='lastName'
+        className={styles.textInput}
       />
       <label htmlFor="firstName">First name</label>
       <input
         type='text'
         id='firstName'
+        className={styles.information}
       />
       <label htmlFor="phoneNumber">Phone number</label>
       <input
         type='text'
         id='phoneNumber'
+        className={styles.information}
       />
       <label htmlFor="email">Email</label>
       <input
         type='text'
         id='email'
+        className={styles.information}
       />
     <input type='submit' value='SUBMIT' />
     </fieldset>
@@ -34,7 +38,7 @@ const Contact = () => (
       <label htmlFor="message"></label>
       <textarea
         id='message'
-        className={styles.Message}
+        className={styles.message}
       />
     </fieldset>
   </form>
