@@ -19,8 +19,10 @@
 }
 
 .image {
-    height: auto;
-    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
 }
 
 .panel {
@@ -28,4 +30,10 @@
     width : 50px;
     padding-left: 2px;
     padding-right: 2px;
+}
+
+.button{
+    text-align: right;
+    font-size: 2em;
+    font-weight: bold;
 }

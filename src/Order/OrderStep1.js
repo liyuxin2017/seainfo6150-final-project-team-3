@@ -64,8 +64,8 @@ class OrderStep1 extends Component {
       : (
       <form onSubmit={this.handleSubmit.bind(this)}>
           {opt}
-        <fieldset>
-          <input type="submit" value="Go to step 2" />
+        <fieldset className={styles.button}>
+          <input type="submit" value="Go to Step 2" />
         </fieldset>
       </form>
 

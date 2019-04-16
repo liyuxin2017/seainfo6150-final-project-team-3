@@ -26,8 +26,7 @@ import Summary from './Order/Summary';
 import ThankYou from './Order/ThankYou';
 import NotFound from './NotFound/NotFound';
 
-//class
-import sty from './App.module.css';
+
 
 let App = props => (
   <Router>
