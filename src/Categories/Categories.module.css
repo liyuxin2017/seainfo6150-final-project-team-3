@@ -4,7 +4,7 @@
   height: 100%;
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
-   font-size: 20px;
+  font-size: 20px;
 }
 
 .link {
@@ -18,4 +18,30 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    color: white;
+    background: rgb(18, 18, 61);
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 1em;
+  }
+
+  .link {
+    color: aliceblue;
+    text-decoration: underline;
+    font-size: 0.8em;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding-left: 1em;
+    margin: 0;
+  }
 }
