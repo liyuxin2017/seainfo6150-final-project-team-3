@@ -16,11 +16,20 @@ export const setUserInfo = ({ id, e }) => (dispatch, getState) => {
 };
 
 export const setProductOption = ({ id, e }) => (dispatch, getState) => {
-  dispatch(removeError());
 
-  const value = e.target.hasOwnProperty('checked')
+
+  dispatch(removeError());
+  console.log("Hello World");
+  console.log(e.target);
+  const value = (e.target.hasOwnProperty('checked') &&
+      !(e.target.name === "Hood Ornament" || e.target.name === "Trunk Monkey"))
     ? e.target.checked
     : e.target.value;
+
+  console.log("Valueueeee");
+  console.log(e.target);
+  console.log(e.target.name);
+  console.log(value);
   switch (id) {
     case 'color':
       dispatch(setColor(value));
@@ -203,9 +212,8 @@ const setHasGPS = hasGPS => (dispatch, getState) => {
 
 const setNumExhausts = numExhausts => (dispatch, getState) => {
   const { options } = getState();
-  const maximumNumExhausts = options.numExhausts.requirements.maximumNum;
-  const minimumNumExhausts = options.numExhausts.requirements.minimumNum;
-
+  const maximumNumExhausts = options.numExhausts.maximumNum;
+  const minimumNumExhausts = options.numExhausts.minimumNum;
   if (numExhausts > maximumNumExhausts) {
     dispatch(
       setError(`Vehicles can have a maximum of ${maximumNumExhausts} exhausts.`)
@@ -367,7 +375,7 @@ const setHasHoodOrnament = hasHoodOrnament => (dispatch, getState) => {
     dispatch(
       setOption({
         id: 'hoodOrnament',
-        value: options.hoodOrnament.values[0].id
+        value: options.hoodOrnament.values['battleship'].id
       })
     );
   } else {
@@ -418,7 +426,7 @@ const setHasTrunkMonkey = hasTrunkMonkey => (dispatch, getState) => {
     const { options } = getState();
     dispatch(setOption({ id: 'hasTrunkMonkey', value }));
     dispatch(
-      setOption({ id: 'trunkMonkey', value: options.trunkMonkey.values[0].id })
+      setOption({ id: 'trunkMonkey', value: options.trunkMonkey.values['capuchin'].id })
     );
   } else {
     dispatch(removeOption('hasTrunkMonkey'));
@@ -451,19 +459,14 @@ const setMonogram = monogram => (dispatch, getState) => {
   const { options } = getState();
   const maximumNumMonogramLetters = options.monogram.requirements.maximumNum;
 
-  if (!/[a-zA-Z]/.test(monogram)) {
+ /* if (!/[a-zA-Z]/.test(monogram)) {
     dispatch(setError(`Monograms can only be letters`));
+  }*/
+   if (monogram < maximumNumMonogramLetters || monogram > maximumNumMonogramLetters) {
+    dispatch( setError(`Vehicles must have ${maximumNumMonogramLetters} letters in the monogram.`));
   }
-
-  if (
-    monogram.length < maximumNumMonogramLetters ||
-    monogram.length > maximumNumMonogramLetters
-  ) {
-    dispatch(
-      setError(
-        `Vehicles must have ${maximumNumMonogramLetters} letters in the monogram.`
-      )
-    );
+  else {
+      dispatch(removeError('monogram'))
   }
   dispatch(setOption({ id: 'monogram', value: monogram }));
-};
+}

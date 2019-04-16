@@ -9,8 +9,6 @@ import styles from "./OrderStep1.module.css";
 
 class OrderStep1 extends Component {
     constructor(props) {
-    console.log("Check 1");
-    console.log(props);
     super(props);
 
     this.state = {
@@ -31,26 +29,37 @@ class OrderStep1 extends Component {
       setProductOption,
         categories
     } = this.props;
-      console.log(this.props);
-      console.log("Check 2 " + selectedProductId +" " + categories);
     let selectedProductCategoryId = null;
     const selectedProduct = this.props.products[selectedProductId];
 
     let opt;
     if (selectedProduct) {
         selectedProductCategoryId = selectedProduct.categoryId;
-        console.log(this.props.options);
         const category = categories[selectedProductCategoryId];
         opt = (
             <div className={styles.container}>
                 
                 <div className={styles["top-panel"]}>
-                    {
-                        <PowerOptions className={styles["panel"]} selectedProduct={selectedProductCategoryId} options={this.props.options}/>
-                    }
-                    {<InteriorOptions selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
-                    {<ExteriorOptions selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
-                    {<PremiumFeatures selectedProduct={selectedProductCategoryId} options={this.props.options}/>}
+                    {<PowerOptions className={styles["panel"]}
+                                      setProductOption = {this.props.setProductOption}
+                                      selectedProduct={selectedProductCategoryId}
+                                        selectedOptions={this.props.selectedOptions}
+                                      options={this.props.options}/>}
+                    {<InteriorOptions
+                        setProductOption = {this.props.setProductOption}
+                        selectedProduct={selectedProductCategoryId}
+                        selectedOptions={this.props.selectedOptions}
+                        options={this.props.options}/>}
+                    {<ExteriorOptions
+                        setProductOption = {this.props.setProductOption}
+                        selectedProduct={selectedProductCategoryId}
+                        selectedOptions={this.props.selectedOptions}
+                        options={this.props.options}/>}
+                    {<PremiumFeatures
+                        setProductOption = {this.props.setProductOption}
+                        selectedProduct={selectedProductCategoryId}
+                        selectedOptions={this.props.selectedOptions}
+                        options={this.props.options}/>}
                 </div>
                 <div className={styles["bottom-panel"]}>
                     <img className={styles.image} src={category.img.lg} />
@@ -74,8 +83,10 @@ class OrderStep1 extends Component {
 }
 
 OrderStep1.propTypes = {
-  options: PropTypes.object.isRequired,
-  selectedProductId: PropTypes.string
+    options: PropTypes.object.isRequired,
+    selectedProductId: PropTypes.string,
+    selectedOptions: PropTypes.object.isRequired,
+    setProductOption: PropTypes.func.isRequired,
 };
 
 export default OrderStep1;

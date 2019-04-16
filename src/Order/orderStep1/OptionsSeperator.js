@@ -2,158 +2,260 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from "./OptionsSeperator.module.css";
 
+class OptionsSeperator extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-const OptionsSeperator = ({props, allowedValues}) => (
-        Object.values(props.options).map(option => {
-            const colorDisplay = (color) => ({
-                backgroundColor: color,
-                color: color
+    checkIfOptionAllowed(option) {
+        if(this.props.allowedValues.indexOf(option.id) !== -1) {
+            return true;
+        }
+        return false;
+    }
+
+    getColorOptions(option) {
+        const colorDisplay = (color) => ({
+            backgroundColor: color,
+            color: color
+        });
+
+        if (!option.id.startsWith("num") &&
+            !option.id.startsWith("has") &&
+            option.id.toLowerCase().endsWith("color")) {
+            let colors = ["white", "black", "silver", "grey"];
+            if (option.requirements) {
+                Object.entries(option.requirements).forEach(([key, val]) => {
+                    if (key === this.props.selectedProduct) {
+                        colors = [val];
+                    }
+                });
+            }
+            let optionItems = [];
+            optionItems.push(<option value={null}>No Preference</option>);
+            for (let i = 0; i<colors.length; i++ ) {
+                optionItems.push(<option value={colors[i]}>{colors[i]}</option>);
+            }
+            return optionItems;
+        }
+        return null;
+    }
+
+    getHoodOrnaments(option) {
+        if (option.id === 'hoodOrnament' && this.props.selectedOptions['hasHoodOrnament']) {
+            let optionItems = [];
+            Object.values(option.values).forEach((val) => {
+                optionItems.push(<div className={styles.option_image}
+                                      value={val}>
+                    <input type="checkbox"
+                           name={option.name}
+                           value={val.id}
+                           onChange={this.props.setProductOption.bind(null, option.id)}
+                           checked={this.props.selectedOptions['hoodOrnament'] === val.id}/>
+                    <img className={styles.option_image}
+                         src={val.img}
+                         alt={val.id}/>
+                </div>);
             });
-            let booleanHasImage = false;
-        if(allowedValues.indexOf(option.id) !== -1) {
-            let optionItems = null;
-            if(option.values) {
-                optionItems = Object.values(option.values).map((val) => {
-                        return <option value={val}>{val}</option>;
-                    }
-                );
-            }
-            if(!option.id.startsWith("num") &&
-                !option.id.startsWith("has") &&
-                option.id.toLowerCase().endsWith("color")) {
-                let colors = ["white", "black", "silver" , "grey"];
-                if(option.requirements) {
-                    Object.entries(option.requirements).forEach(([key, val]) => {
-                        if(key == props.selectedProduct) {
-                            colors = [val];
-                        }
-                    });
+            return optionItems;
+        }
+        return null;
+    }
+
+    getTruckMonkey(option) {
+        if (option.id === 'trunkMonkey' && this.props.selectedOptions['hasTrunkMonkey']) {
+            let optionItems = [];
+            Object.values(option.values).forEach((val) => {
+                optionItems.push(<div className={styles.option_image}
+                                      value={val}>
+                    <input type="checkbox"
+                           name={option.name}
+                           value={val.id}
+                           onChange={this.props.setProductOption.bind(null, option.id)}
+                           checked={this.props.selectedOptions['trunkMonkey'] === val.id}/>
+                    <img className={styles.option_image}
+                         src={val.img.sm}
+                         alt={val.id}/>
+                </div>);
+
+            });
+            return optionItems;
+        }
+        return null;
+    }
+
+    getRadioTypeOptions(option) {
+        if (option.id === 'radioType') {
+            let types = ["basic", "medium", "fancy"];
+            Object.entries(option.values).forEach(([key, val]) => {
+                    types = val;
                 }
-                optionItems = Object.values(colors).map((val) => {
-                    console.log("Setting color");
-                    console.log(val);
-                        return <option value={val} style={colorDisplay(val)}>
-                            {val}
-                            </option>;
-                    }
-                );
+            );
+            let optionItems = [];
+            optionItems.push(<option value={null}>No Preference</option>);
+            for (let i = 0; i<types.length; i++ ) {
+                optionItems.push(<option value={types[i]}>{types[i]}</option>);
             }
+            return optionItems;
+        }
+        return null;
+    }
 
-            if(option.id == 'radioType') {
-                let types = ["basic","medium","fancy"];
-                Object.entries(option.values).forEach(([key, val]) => {
-                        types = val;
-                    }
-                );
-                optionItems = Object.values(types).map((val) => {
-                        return <option value={val}>{val}</option>;
-                    }
-                );
-            }
-
-            if(option.id == 'hoodOrnament') {
-                booleanHasImage = true;
-                optionItems = Object.values(option.values).map((val) => {
-                        return <div className={styles.option_image}>
-                            <img className={styles.option_image} src={val.img} alt={val.id} />
-                        </div>;
-                    }
-                );
-            }
-
-            if(option.id == 'trunkMonkey') {
-                booleanHasImage = true;
-                optionItems = Object.values(option.values).map((val) => {
-                    return <div className={styles.option_image}>
-                            <img className={styles.option_image} src={val.img.sm} alt={val.id} />
-                        </div>;
-                    }
-                );
+    getNumberOrMonogram(option) {
+        if (option.id.startsWith("num") || option.id === "monogram") {
+            let minNumber = 1;
+            let maxNumber = 10;
+            if (option.minimumNum) {
+                minNumber = option.minimumNum;
             }
 
-            if (option.id.startsWith("num") || option.id == "monogram") {
-                let minNumber = 1;
-                let maxNumber = 10;
-                if(option.minimumNum) {
-                    minNumber = option.minimumNum;
-                }
-
-                if(option.maximumNum) {
-                    maxNumber = option.maximumNum;
-                }
-
-                if(option.requirements) {
-                    Object.entries(option.requirements).forEach(([key, val]) => {
-                        if(key == 'maximumNum') {
-                            maxNumber =  val;
-                        }
-                        if(key == 'minimumNum') {
-                            minNumber =  val;
-                        }
-                    });
-                    Object.entries(option.requirements).forEach(([key, val]) => {
-                        if(key == props.selectedProduct) {
-                            minNumber =  val;
-                            maxNumber = val;
-                        }
-                    });
-                }
-
-                optionItems = []
-                for (let i = minNumber; i <= maxNumber; i++) {
-                    optionItems.push(<option value={i}>{i}</option>);
-                }
+            if (option.maximumNum) {
+                maxNumber = option.maximumNum;
             }
 
-            if(option.id.startsWith("has")) {
-                let radio_flag = true;
-                let default_val = null;
-                if(option.requirements) {
-                    Object.entries(option.requirements).forEach(([key, val]) => {
-                        if(key == props.selectedProduct) {
-                            radio_flag = false;
-                            default_val = val;
-                        }
-                    });
-                }
-                if(radio_flag) {
-                    return <div>
-                        <p className={styles.main_text}>{option.name} </p>
-                        <input type="radio" name={option.name} value={option.name+"true"} checked/> True
-                        <input type="radio" name={option.name} value={option.name+"false"}/> False
-                    </div>
-                } else {
-                    return <div>
-                        <p className={styles.main_text}>{option.name}</p>
-                        {default_val.toString()}
-                    </div>
-                }
-            } else if (booleanHasImage) {
+            if (option.requirements) {
+                Object.entries(option.requirements).forEach(([key, val]) => {
+                    if (key === 'maximumNum') {
+                        maxNumber = val;
+                    }
+                    if (key === 'minimumNum') {
+                        minNumber = val;
+                    }
+                });
+                Object.entries(option.requirements).forEach(([key, val]) => {
+                    if (key === this.props.selectedProduct) {
+                        minNumber = val;
+                        maxNumber = val;
+                    }
+                });
+            }
+
+            let optionItems = [];
+            optionItems.push(<option value={null}>No Preference</option>);
+            for (let i = minNumber; i <= maxNumber; i++) {
+                optionItems.push(<option value={i}>{i}</option>);
+            }
+
+            return optionItems;
+        }
+
+        return null;
+    }
+
+    formRadioButtons(option) {
+        if (option.id.startsWith("has")) {
+            let radio_flag = true;
+            let default_val = null;
+            if (option.requirements) {
+                Object.entries(option.requirements).forEach(([key, val]) => {
+                    if (key === this.props.selectedProduct) {
+                        radio_flag = false;
+                        default_val = val;
+                    }
+                });
+            }
+            if (radio_flag) {
                 return <div>
-                    <p className={styles.main_text}>{option.name}</p>
-                    {optionItems}
-                    </div>;
-            }
-            else {
-                return <div id={option.name} > <p className={styles.main_text}>{option.name} </p>
-                    {
-                        optionItems != null ?
-                            <select className={styles.select_width}>
-                                {optionItems}
-                            </select>
-                            : null
-                    }
+                    <p className={styles.main_text +" " + styles.check_box_input}>{option.name} </p>
+                    <input type="checkbox" name={option.name} value={option.name}
+                           onClick={this.props.setProductOption.bind(null, option.id)}
+                    checked={this.props.selectedOptions['option.name']}/>
+                </div>
+            } else {
+                return <div>
+                    <p className={styles.main_text +" " + styles.check_box_input}>{option.name}</p>
+                    <input type="checkbox" name={option.name} value={option.name}
+                           onClick={this.props.setProductOption.bind(null, option.id)}
+                           checked={default_val} disabled={true}/>
                 </div>
             }
-        } else {
+        }
+        return null;
+    }
+
+    formImageOptions(option) {
+        let optionItems = this.getTruckMonkey(option);
+        if(optionItems == null) {
+            optionItems = this.getHoodOrnaments(option);
+        }
+        if(optionItems != null) {
+            return <div>
+                <p className={styles.main_text}>{option.name}</p>
+                {optionItems}
+            </div>;
+        }
+        return null;
+    }
+
+    formAllOtherOptions(option) {
+
+        if (option.id.startsWith("has") || option.id === 'trunkMonkey' || option.id === 'hoodOrnament') {
             return null;
         }
-    })
-);
+
+        let optionItems = this.getColorOptions(option);
+
+        if(optionItems == null) {
+            optionItems = this.getRadioTypeOptions(option);
+        }
+
+        if(optionItems == null) {
+            optionItems = this.getNumberOrMonogram(option);
+        }
+
+        if (optionItems == null && option.values !== undefined) {
+            optionItems = [];
+            optionItems.push(<option value={null}>No Preference</option>);
+            for (let i = 0; i<option.values.length; i++ ) {
+                optionItems.push(<option value={option.values[i]}>{option.values[i]}</option>);
+            }
+        }
+
+        if(optionItems != null) {
+            return <div id={option.name}><p className={styles.main_text}>{option.name} </p>
+                {
+                    optionItems != null ?
+                        <select className={styles.select_width}
+                                defaultValue="None"
+                                onChange={this.props.setProductOption.bind(null, option.id)}>
+                            {optionItems}
+                        </select>
+                        : null
+                }
+            </div>
+        }
+        return null;
+    }
+
+    getOptions() {
+        console.log("Ssd");
+        console.log(this.props.selectedOptions);
+        return Object.values(this.props.options).map(option => {
+            if(!this.checkIfOptionAllowed(option)) {
+                return false;
+            }
+            let return_val = this.formRadioButtons(option);
+            if(return_val == null){
+                return_val = this.formImageOptions(option);
+            }
+            if(return_val == null) {
+                return_val = this.formAllOtherOptions(option);
+            }
+            return return_val;
+        });
+    }
+
+    render() {
+        return this.getOptions();
+    }
+}
 
 OptionsSeperator.propTypes = {
+    selectedProduct: PropTypes.string.isRequired,
+    options: PropTypes.object.isRequired,
     allowedValues: PropTypes.array.isRequired,
-    props: PropTypes.object.isRequired,
+    setProductOption: PropTypes.func.isRequired,
+    selectedOptions: PropTypes.object.isRequired,
 };
 
 export default OptionsSeperator;
