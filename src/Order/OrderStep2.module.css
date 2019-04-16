@@ -23,6 +23,24 @@
   font-size: 25px;
   font-weight: bold;
   padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.content {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+input[type='text'] {
+  width: auto;
+
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
 .content {
@@ -61,9 +79,11 @@ input {
 }
 
 .container {
+  width: 60%;
+  height: auto;
   border-radius: 5px;
   padding: 20px;
-  margin-left: 50px;
+  margin-left: 70px;
   margin-right: 50px;
   padding-left: 50px;
   padding-right: 50px;

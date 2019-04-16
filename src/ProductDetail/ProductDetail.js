@@ -13,21 +13,21 @@ class ProductDetail extends PureComponent {
     const category = categories[product.categoryId];
     return (
       <div>
-        <span>{product.title}</span>
+        
         <div className={styles.productInfo}>
+        <span>{product.title}</span>
           <img src={category.img.lg} className={styles.image} />
 
           <div className={styles.productTextInfo}>
             {/* start order button */}
             <span> ID: {product.id}</span>
             <br />
-            <span> Name: {product.title}</span>
+            <span> Model: {product.title}</span>
             <br />
             <span> Year: {product.year}</span>
             <br />
-            <span> Available: {product.available} </span>
-            <br />
-            <span> Sale Price: {product.price}</span>
+            
+            <span> Offer Price: {product.sale}</span>
             <br />
             <span> Price: {product.price}</span>
             <br />
