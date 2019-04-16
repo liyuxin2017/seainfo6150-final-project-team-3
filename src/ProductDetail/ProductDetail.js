@@ -11,29 +11,26 @@ class ProductDetail extends PureComponent {
     const { categories, product, selectProductId } = this.props;
 
     const category = categories[product.categoryId];
-    return (
-      <div>
-        
-        <div className={styles.productInfo}>
-        <span>{product.title}</span>
-          <img src={category.img.lg} className={styles.image} />
+    function Price(props){
+      const pro=product.sale;
+      if (pro){
+        return  (
+          <div>Offer Price: ${product.sale}</div>
+          )
+        }
+          return (
+        <div> Price: ${product.price}
+        </div>
+        )
+      
+    }
 
-          <div className={styles.productTextInfo}>
-            {/* start order button */}
-            <span> ID: {product.id}</span>
-            <br />
-            <span> Model: {product.title}</span>
-            <br />
-            <span> Year: {product.year}</span>
-            <br />
-            
-            <span> Offer Price: {product.sale}</span>
-            <br />
-            <span> Price: {product.price}</span>
-            <br />
-            <span> Description: {product.description}</span>
-            <br />
-            <div className={styles.button}>
+    function OrderLink(props){
+      const pro=product.available;
+      if (pro){
+        return  (
+          <div className={styles.button}>
+
               <Link
                 to='/order/1'
                 onClick={selectProductId.bind(null, product.id)}
@@ -41,8 +38,41 @@ class ProductDetail extends PureComponent {
               >
                 Order
               </Link>
-              {/* end order button */}
+          </div>
+          )
+        }
+          return (
+            <div className={styles.button}>
+             <Link to='/error' className={styles.link}>
+             Sorry not available
+             </Link>
             </div>
+        )
+      
+    }
+    return (
+      <div>
+      <div className={styles.head}>
+        <span>{product.title}</span>
+        </div>
+        <div className={styles.productInfo}>
+
+          <img src={category.img.lg} className={styles.image} />
+
+          <div className={styles.productTextInfo}>
+            {/* start order button */}
+           
+            <span> Model: {product.title}</span>
+            <br />
+            <span> Year: {product.year}</span>
+            <br />
+            
+            <span><Price pro={product.sale} /></span>
+            
+           
+            <span> Description: {product.description}</span>
+            <br />
+           <OrderLink pro={product.available} />
           </div>
         </div>
       </div>

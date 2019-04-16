@@ -1,0 +1,13 @@
+.detail{
+	display: flex;
+	flex-direction: column;
+	font-family: "Times New Roman", sans-serif;
+ 	font-style: italic;
+  	font-weight: bold;
+  	margin-left: 20px;
+}
+
+.image{
+	height: 20px;
+	width:20px;
+}
