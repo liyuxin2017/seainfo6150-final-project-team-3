@@ -13,10 +13,9 @@ class OrderStep2 extends Component {
       isLastNameValid: true,
       isPhoneNumberValid: true,
       isCellNumberValid: true,
+      isZipCodeValid: true,
       isbillingAddressSameAsShipment: false
     };
-
-    this.setFirstNameValid = this.setFirstNameValid.bind(this);
   }
 
   handleSubmit() {
@@ -27,8 +26,10 @@ class OrderStep2 extends Component {
 
   componentDidMount() {}
 
-  setFirstNameValid = () => {
-    if (this.state.isFirstNameValid) {
+  setFirstNameValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^[a-zA-Z]{2,20}$/g;
+    if (regName.test(value)) {
       this.setState({
         isFirstNameValid: true
       });
@@ -37,6 +38,49 @@ class OrderStep2 extends Component {
         isFirstNameValid: false
       });
     }
+    setUserInfo('First Name', e);
+  };
+  setLastNameValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^[a-zA-Z]{2,20}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isLastNameValid: true
+      });
+    } else {
+      this.setState({
+        isLastNameValid: false
+      });
+    }
+    setUserInfo('Last Name', e);
+  };
+  setPhoneNumberValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^\d{10}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isPhoneNumberValid: true
+      });
+    } else {
+      this.setState({
+        isPhoneNumberValid: false
+      });
+    }
+    setUserInfo('Phone Number', e);
+  };
+  setCellNumberValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^\d{10}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isCellNumberValid: true
+      });
+    } else {
+      this.setState({
+        isCellNumberValid: false
+      });
+    }
+    setUserInfo('Cell Number', e);
   };
 
   setBillingAddressSameAsShipment = () => {
@@ -64,6 +108,17 @@ class OrderStep2 extends Component {
     setUserInfo('Shipment State', e);
   }
   setBillingZipCode(e, setUserInfo) {
+    const value = e.target.value;
+    const regZip = /^\d{5}$/g;
+    if (regZip.test(value)) {
+      this.setState({
+        isZipCodeValid: true
+      });
+    } else {
+      this.setState({
+        isZipCodeValid: false
+      });
+    }
     setUserInfo('Billing Zip Code', e);
     setUserInfo('Shipment Zip Code', e);
   }
@@ -89,16 +144,17 @@ class OrderStep2 extends Component {
                   type='text'
                   name='userFirstName'
                   id='userFirstName'
-                  onChange={() => {
-                    this.setFirstNameValid();
-                    setUserInfo.bind(null, 'First Name');
+                  onChange={e => {
+                    this.setFirstNameValid(e, setUserInfo);
                   }}
                   required
                 />
                 {this.state.isFirstNameValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>First Name should be 2-20 letters</p>
+                  <p className={styles.error}>
+                    First Name should be 2-20 letters
+                  </p>
                 )}
               </div>
             </div>
@@ -110,13 +166,17 @@ class OrderStep2 extends Component {
                   type='text'
                   name='userLastName'
                   id='userLastName'
-                  onChange={setUserInfo.bind(null, 'Last Name')}
+                  onChange={e => {
+                    this.setLastNameValid(e, setUserInfo);
+                  }}
                   required
                 />
                 {this.state.isLastNameValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>Last Name should be 2-20 letters</p>
+                  <p className={styles.error}>
+                    Last Name should be 2-20 letters
+                  </p>
                 )}
               </div>
             </div>
@@ -144,13 +204,15 @@ class OrderStep2 extends Component {
                   type='text'
                   name='phoneNumber'
                   id='phoneNumber'
-                  onChange={setUserInfo.bind(null, 'Phone Number')}
+                  onChange={e => {
+                    this.setPhoneNumberValid(e, setUserInfo);
+                  }}
                   required
                 />
                 {this.state.isPhoneNumberValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>
+                  <p className={styles.error}>
                     Phone Number should be a 10-digit number
                   </p>
                 )}
@@ -164,12 +226,14 @@ class OrderStep2 extends Component {
                   type='text'
                   name='cellNumber'
                   id='cellNumber'
-                  onChange={setUserInfo.bind(null, 'Cell Number')}
+                  onChange={e => {
+                    this.setCellNumberValid(e, setUserInfo);
+                  }}
                 />
                 {this.state.isCellNumberValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>
+                  <p className={styles.error}>
                     Cell Number should be a 10-digit number
                   </p>
                 )}
@@ -236,6 +300,11 @@ class OrderStep2 extends Component {
                   }}
                   required
                 />
+                {this.state.isZipCodeValid ? (
+                  ''
+                ) : (
+                  <p className={styles.error}>Zip Code should be 5 letters</p>
+                )}
               </div>
             </div>
           </div>
@@ -392,6 +461,13 @@ class OrderStep2 extends Component {
                       id='zipCode'
                       onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
                     />
+                    {this.state.isZipCodeValid ? (
+                      ''
+                    ) : (
+                      <p className={styles.error}>
+                        Zip Code should be 5 letters
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
