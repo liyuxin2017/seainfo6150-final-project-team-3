@@ -6,8 +6,15 @@ import styles from './OrderStep2.module.css';
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      submittedSuccessfully: false
+      submittedSuccessfully: false,
+      isFirstNameValid: true,
+      isLastNameValid: true,
+      isPhoneNumberValid: true,
+      isCellNumberValid: true,
+      isbillingAddressSameAsShipment: false,
+      billingAddress: ''
     };
   }
 
@@ -17,23 +24,23 @@ class OrderStep2 extends Component {
     });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    let labelsArray = document.querySelectorAll('label');
+    labelsArray.forEach(function(elem) {
+      elem.addEventListener('click', function() {
+        elem.setAttribute('style', 'margin-top:0');
+      });
+    });
+  }
 
-  enableShipmentAddress = () => {
-    this.addressText.disabled = false;
-    this.cityText.disabled = false;
-    this.stateText.disabled = false;
-    this.zipText.disabled = false;
+  setFirstNameValid = () => {
+    if (this.state.isFirstNameValid) {
+      this.state.isFirstNameValid = true;
+    } else this.state.isFirstNameValid = false;
   };
-  disableShipmentAddress = () => {
-    this.addressText.disabled = true;
-    this.addressText.style = 'background-color:lightgrey;';
-    this.cityText.disabled = true;
-    this.cityText.style = 'background-color:lightgrey;';
-    this.stateText.disabled = true;
-    this.stateText.style = 'background-color:lightgrey;';
-    this.zipText.disabled = true;
-    this.zipText.style = 'background-color:lightgrey;';
+  setBillingAddressSameAsShipment = () => {
+    this.state.isbillingAddressSameAsShipment = !this.state
+      .isbillingAddressSameAsShipment;
   };
 
   render() {
@@ -42,143 +49,295 @@ class OrderStep2 extends Component {
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/summary' />
     ) : (
+      <form
+        onSubmit={this.handleSubmit.bind(this)}
+        className={styles.container}
+      >
+        <fieldset>
+          <legend>Personal Information</legend>
 
-      <form onSubmit={this.handleSubmit.bind(this)}>
-      <div className={styles.container}>
-        <fieldset className={styles.textFields}>
-          <legend className={styles.header}>Personal Information</legend>
-            <div className={styles.content}>
-          Last Name{' '}
-          <input
-            type='text'
-            name='userLastName'
-            onChange={setUserInfo.bind(null, 'userLastName')}
-            required
-          />
-          First Name{' '}
-          <input
-            type='text'
-            name='userFirstName'
-            onChange={setUserInfo.bind(null, 'userFirstName')}
-            required
-          />
-          <br />
-          Date of birth{' '}
-          <input
-            type='date'
-            onChange={setUserInfo.bind(null, 'date')}
-            required
-          />
-          <br />
-          Phone Number{' '}
-          <input
-            type='text'
-            name='phoneNumber'
-            onChange={setUserInfo.bind(null, 'phoneNumber')}
-            required
-          />
-          <br />
-          Cell Number{' '}
-          <input
-            type='text'
-            name='cellNumber'
-            onChange={setUserInfo.bind(null, 'cellNumber')}
-          />
+          <div className={styles.row}>
+            <div className={styles.labelInput}>
+              <label for='userFirstName'>*First Name</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='userFirstName'
+                  id='userFirstName'
+                  onChange={this.setFirstNameValid()}
+                  onChange={setUserInfo.bind(null, 'userFirstName')}
+                  required
+                />
+                {this.state.isFirstNameValid ? (
+                  ''
+                ) : (
+                  <p class={styles.error}>First Name should be 2-20 letters</p>
+                )}
+              </div>
+            </div>
+
+            <div className={styles.labelInput}>
+              <label for='userLastName'>*Last Name</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='userLastName'
+                  id='userLastName'
+                  onChange={setUserInfo.bind(null, 'userLastName')}
+                  required
+                />
+                {this.state.isLastNameValid ? (
+                  ''
+                ) : (
+                  <p class={styles.error}>Last Name should be 2-20 letters</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.row}>
+            <div className={styles.labelInput}>
+              <label for='dateOfBirth'>*Date of birth:</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='date'
+                  id='dateOfBirth'
+                  onChange={setUserInfo.bind(null, 'date')}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.row}>
+            <div className={styles.labelInput}>
+              <label for='phoneNumber'>*Phone Number</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='phoneNumber'
+                  id='phoneNumber'
+                  onChange={setUserInfo.bind(null, 'phoneNumber')}
+                  required
+                />
+                {this.state.isPhoneNumberValid ? (
+                  ''
+                ) : (
+                  <p class={styles.error}>
+                    Phone Number should be a 10-digit number
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className={styles.labelInput}>
+              <label for='cellNumber'>Cell Number</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='cellNumber'
+                  id='cellNumber'
+                  onChange={setUserInfo.bind(null, 'cellNumber')}
+                />
+                {this.state.isCellNumberValid ? (
+                  ''
+                ) : (
+                  <p class={styles.error}>
+                    Cell Number should be a 10-digit number
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         </fieldset>
         <fieldset className={styles.textFields}>
-          <legend className={styles.header}>Address Information</legend>
-          <div className={styles.content}>
-          Billing Address:{' '}
-          <input
-            type='text'
-            name='address'
-            onChange={setUserInfo.bind(null, 'address')}
-            required
-          />
-          <br />
-          City{' '}
-          <input
-            type='text'
-            name='city'
-            onChange={setUserInfo.bind(null, 'city')}
-            required
-          />
-          State{' '}
-          <input
-            type='text'
-            name='state'
-            onChange={setUserInfo.bind(null, 'state')}
-            required
-          />
-          Zip code{' '}
-          <input
-            type='text'
-            name='zipCode'
-            onChange={setUserInfo.bind(null, 'zipCode')}
-            required
-          />
-          <br />
-          Shipment address:
-          <input
-            type='radio'
-            name='shipmentAddress'
-            onClick={this.disableShipmentAddress}
-            required
-          />
-          Same as Billing address
-          <input
-            type='radio'
-            name='shipmentAddress'
-            onClick={this.enableShipmentAddress}
-            required
-          />
-          Enter new address
-          <br />
-          Address{' '}
-          <input
-            type='text'
-            name='address'
-            className={styles.shipment}
-            ref={input => {
-              this.addressText = input;
-            }}
-            onChange={setUserInfo.bind(null, 'address')}
-          />
-          <br />
-          City{' '}
-          <input
-            type='text'
-            name='city'
-            className={styles.shipment}
-            ref={input => {
-              this.cityText = input;
-            }}
-            onChange={setUserInfo.bind(null, 'city')}
-          />
-          State{' '}
-          <input
-            type='text'
-            name='state'
-            className={styles.shipment}
-            ref={input => {
-              this.stateText = input;
-            }}
-            onChange={setUserInfo.bind(null, 'state')}
-          />
-          Zip code{' '}
-          <input
-            type='text'
-            name='zipCode'
-            className={styles.shipment}
-            ref={input => {
-              this.zipText = input;
-            }}
-            onChange={setUserInfo.bind(null, 'zipCode')}
-          />
+          <legend>Address Information</legend>
+          <div className={styles.row}>
+            <div className={styles.labelInput}>
+              <label for='address'>*Billing Address</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='address'
+                  id='address'
+                  onChange={setUserInfo.bind(null, 'billingAddress')}
+                  onChange={e => {
+                    this.setState({ billingAddress: e.target.value });
+                    console.log('billingAddress' + this.state.billingAddress);
+                  }}
+                  required
+                />
+              </div>
+            </div>
           </div>
+          <div className={styles.row}>
+            <div className={styles.labelInput}>
+              <label for='city'>*City</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='city'
+                  id='city'
+                  onChange={setUserInfo.bind(null, 'billingCity')}
+                  required
+                />
+              </div>
+            </div>
+            <div className={styles.labelInput}>
+              <label for='state'>*State</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='state'
+                  id='state'
+                  onChange={setUserInfo.bind(null, 'billingState')}
+                  required
+                />
+              </div>
+            </div>
+            <div className={styles.labelInput}>
+              <label for='zipCode'>*Zip Code</label>
+              <div className={styles.fieldWrapper}>
+                <input
+                  type='text'
+                  name='zipCode'
+                  id='zipCode'
+                  onChange={setUserInfo.bind(null, 'billingZipCode')}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <p>*Shipment address</p>
+            <input
+              type='radio'
+              name='shipmentAddress'
+              id='shipmentAddress-0'
+              onClick={this.setBillingAddressSameAsShipment}
+              required
+            />
+
+            <label className={styles.shipmentAddress} for='shipmentAddress-0'>
+              Same as Billing address
+            </label>
+            <input
+              type='radio'
+              name='shipmentAddress'
+              id='shipmentAddress-1'
+              onClick={this.setBillingAddressSameAsShipment}
+              required
+            />
+            <label className={styles.shipmentAddress} for='shipmentAddress-1'>
+              Enter new address
+            </label>
+          </div>
+
+          {this.state.isbillingAddressSameAsShipment ? (
+            <div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='address'>*Shipment Address</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='address'
+                      id='address'
+                      value={this.state.billingAddress}
+                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='city'>*City</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='city'
+                      id='city'
+                      onChange={setUserInfo.bind(null, 'shipmentCity')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='state'>*State</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='state'
+                      id='state'
+                      onChange={setUserInfo.bind(null, 'shipmentState')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='zipCode'>*Zip Code</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='zipCode'
+                      id='zipCode'
+                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='address'>*Shipment Address</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='address'
+                      id='address'
+                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='city'>*City</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='city'
+                      id='city'
+                      onChange={setUserInfo.bind(null, 'shipmentCity')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='state'>*State</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='state'
+                      id='state'
+                      onChange={setUserInfo.bind(null, 'shipmentState')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='zipCode'>*Zip Code</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='zipCode'
+                      id='zipCode'
+                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </fieldset>
-        </div>
 
         <fieldset className={styles.submit}>
           <input type='submit' value='Go to summary' />

@@ -32,8 +32,7 @@ const Contact = () => (
     <fieldset className={styles.rightField}>
       <legend>Message</legend>
       <label htmlFor="message"></label>
-      <input
-        type='text'
+      <textarea
         id='message'
         className={styles.Message}
       />
