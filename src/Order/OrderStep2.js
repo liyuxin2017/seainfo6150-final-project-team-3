@@ -39,8 +39,11 @@ class OrderStep2 extends Component {
     } else this.state.isFirstNameValid = false;
   };
   setBillingAddressSameAsShipment = () => {
-    this.state.isbillingAddressSameAsShipment = !this.state
-      .isbillingAddressSameAsShipment;
+    // this.state.isbillingAddressSameAsShipment = !this.state
+    //   .isbillingAddressSameAsShipment;
+    this.setState({
+      isbillingAddressSameAsShipment: !this.state.isbillingAddressSameAsShipment
+    });
   };
 
   render() {
@@ -234,57 +237,7 @@ class OrderStep2 extends Component {
           </div>
 
           {this.state.isbillingAddressSameAsShipment ? (
-            <div>
-              <div className={styles.row}>
-                <div className={styles.labelInput}>
-                  <label for='address'>*Shipment Address</label>
-                  <div className={styles.fieldWrapper}>
-                    <input
-                      type='text'
-                      name='address'
-                      id='address'
-                      value={this.state.billingAddress}
-                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className={styles.row}>
-                <div className={styles.labelInput}>
-                  <label for='city'>*City</label>
-                  <div className={styles.fieldWrapper}>
-                    <input
-                      type='text'
-                      name='city'
-                      id='city'
-                      onChange={setUserInfo.bind(null, 'shipmentCity')}
-                    />
-                  </div>
-                </div>
-                <div className={styles.labelInput}>
-                  <label for='state'>*State</label>
-                  <div className={styles.fieldWrapper}>
-                    <input
-                      type='text'
-                      name='state'
-                      id='state'
-                      onChange={setUserInfo.bind(null, 'shipmentState')}
-                    />
-                  </div>
-                </div>
-                <div className={styles.labelInput}>
-                  <label for='zipCode'>*Zip Code</label>
-                  <div className={styles.fieldWrapper}>
-                    <input
-                      type='text'
-                      name='zipCode'
-                      id='zipCode'
-                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            ''
           ) : (
             <div>
               <div className={styles.row}>
