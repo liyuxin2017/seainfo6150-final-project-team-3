@@ -19,6 +19,9 @@ class Summary extends Component {
     });
   }
 
+  printPage() {
+    window.print();
+  }
   render() {
     const {
       options,
@@ -46,47 +49,48 @@ class Summary extends Component {
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/thank-you' />
     ) : (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        {/* This will iterate through all the selected options so you can see what the user chose. */}
-        <img
-          src={selectedProduct.image}
-          className={styles.image}
-          alt='This is image'
-        />
-        <ul>
-          {
-              Object.keys(selectedOptions).map(option => {
-            const originalOption = options[option];
-            const selectedValue = selectedOptions[option];
+      <div>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          {/* This will iterate through all the selected options so you can see what the user chose. */}
+          <img
+            src={selectedProduct.image}
+            className={styles.image}
+            alt='This is image'
+          />
+          <ul>
+            {Object.keys(selectedOptions).map(option => {
+              const originalOption = options[option];
+              const selectedValue = selectedOptions[option];
 
-            return (
-              <li key={option}>
-                {originalOption.name}: {selectedValue}
+              return (
+                <li key={option}>
+                  {originalOption.name}: {selectedValue}
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* This will iterate through all the user info so you can see what the user entered. */}
+          <ul className={styles.display}>
+            {Object.keys(userInfo).map(info => (
+              <li key={info}>
+                {info}: {userInfo[info]}
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
 
-        {/* This will iterate through all the user info so you can see what the user entered. */}
-        <ul className={styles.display}>
-          {Object.keys(userInfo).map(info => (
-            <li key={info}>
-              {info}: {userInfo[info]}
-            </li>
-          ))}
-        </ul>
+          <TotalPrice
+            options={options}
+            product={products[selectedProductId]}
+            selectedOptions={selectedOptions}
+          />
 
-        <TotalPrice
-          options={options}
-          product={products[selectedProductId]}
-          selectedOptions={selectedOptions}
-        />
-
-        <fieldset className={styles.submit}>
-          <input type='submit' value='Submit order' />
-          <button>print</button>
-        </fieldset>
-      </form>
+          <fieldset className={styles.submit}>
+            <input type='submit' value='Submit order' />
+          </fieldset>
+        </form>
+        <button onClick={this.printPage}>print</button>
+      </div>
     );
   }
 }
