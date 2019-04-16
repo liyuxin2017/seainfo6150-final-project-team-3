@@ -17,19 +17,19 @@ const Contact = () => (
       <input
         type='text'
         id='firstName'
-        className={styles.information}
+        className={styles.textInput}
       />
       <label htmlFor="phoneNumber">Phone number</label>
       <input
         type='text'
         id='phoneNumber'
-        className={styles.information}
+        className={styles.textInput}
       />
       <label htmlFor="email">Email</label>
       <input
         type='text'
         id='email'
-        className={styles.information}
+        className={styles.textInput}
       />
     <input type='submit' value='SUBMIT' />
     </fieldset>

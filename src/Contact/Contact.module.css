@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  height: 95%;
 }
 
 .form {
@@ -23,6 +24,8 @@
 }
 
 .textInput {
+  margin-bottom: 1em;
+  width: 100%;
 }
 
 .message {
