@@ -54,7 +54,8 @@ class Summary extends Component {
           alt='This is image'
         />
         <ul>
-          {Object.keys(selectedOptions).map(option => {
+          {
+              Object.keys(selectedOptions).map(option => {
             const originalOption = options[option];
             const selectedValue = selectedOptions[option];
 

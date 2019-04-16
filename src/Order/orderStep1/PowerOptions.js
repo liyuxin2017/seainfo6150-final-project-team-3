@@ -30,7 +30,12 @@ class PowerOptions extends React.Component {
                     this.state.open ? (
                         <div className={styles.content}>
                             {
-                                <OptionsSeperator props={this.props} allowedValues={this.allowedValues}/>
+                                <OptionsSeperator
+                                    options={this.props.options}
+                                    allowedValues={this.allowedValues}
+                                    selectedProduct={this.props.selectedProduct}
+                                    selectedOptions={this.props.selectedOptions}
+                                    setProductOption={this.props.setProductOption}/>
                             }
                         </div>
                         ) :
@@ -43,6 +48,8 @@ class PowerOptions extends React.Component {
 PowerOptions.propTypes = {
     selectedProduct: PropTypes.string.isRequired,
     options: PropTypes.object.isRequired,
+    selectedOptions: PropTypes.object.isRequired,
+    setProductOption: PropTypes.func.isRequired
 };
 
 export default PowerOptions;
