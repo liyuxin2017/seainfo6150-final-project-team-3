@@ -2,6 +2,9 @@
   margin: 1em;
 }
 
+fieldset {
+  width: 100%;
+}
 .submit {
   text-align: right;
 
@@ -13,42 +16,7 @@
   font-family: 'Times New Roman', Times, serif;
 
   color: aliceblue;
-  font-size: 20px;
   border-radius: 3em;
-}
-
-.header {
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 25px;
-  font-weight: bold;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-.content {
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 20px;
-  padding-bottom: 20px;
-}
-
-input[type='text'] {
-  width: auto;
-
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 25px;
-  font-weight: bold;
-  padding-bottom: 10px;
-}
-
-.content {
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-size: 20px;
-  padding-bottom: 20px;
-  float: left;
 }
 
 .row {
@@ -68,13 +36,8 @@ input[type='text'] {
   padding: 1.1em 2px;
 }
 
-input[type='text'] :focus {
-  border: 3px solid #555;
-}
-
 input {
   height: 4em;
-  font-size: 1em;
   width: -webkit-fill-available;
 }
 
