@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styles from './OrderStep2.module.css';
-import { userInfo } from 'os';
 
 class OrderStep2 extends Component {
-  e = React.createElement;
   constructor(props) {
     super(props);
+
     this.state = {
       submittedSuccessfully: false,
       isFirstNameValid: true,
       isLastNameValid: true,
       isPhoneNumberValid: true,
       isCellNumberValid: true,
-      isbillingAddressSameAsShipment: false
+      isbillingAddressSameAsShipment: false,
+      billingAddress: ''
     };
   }
 
@@ -34,7 +34,6 @@ class OrderStep2 extends Component {
   }
 
   setFirstNameValid = () => {
-    console.log('this.isFirstNameValid: ' + this.state.isFirstNameValid);
     if (this.state.isFirstNameValid) {
       this.state.isFirstNameValid = true;
     } else this.state.isFirstNameValid = false;
@@ -42,7 +41,6 @@ class OrderStep2 extends Component {
   setBillingAddressSameAsShipment = () => {
     this.state.isbillingAddressSameAsShipment = !this.state
       .isbillingAddressSameAsShipment;
-    console.log(this.state.isbillingAddressSameAsShipment);
   };
 
   render() {
@@ -140,7 +138,6 @@ class OrderStep2 extends Component {
                   name='cellNumber'
                   id='cellNumber'
                   onChange={setUserInfo.bind(null, 'cellNumber')}
-                  required
                 />
                 {this.state.isCellNumberValid ? (
                   ''
@@ -163,7 +160,11 @@ class OrderStep2 extends Component {
                   type='text'
                   name='address'
                   id='address'
-                  onChange={setUserInfo.bind(null, 'address')}
+                  onChange={setUserInfo.bind(null, 'billingAddress')}
+                  onChange={e => {
+                    this.setState({ billingAddress: e.target.value });
+                    console.log('billingAddress' + this.state.billingAddress);
+                  }}
                   required
                 />
               </div>
@@ -177,7 +178,7 @@ class OrderStep2 extends Component {
                   type='text'
                   name='city'
                   id='city'
-                  onChange={setUserInfo.bind(null, 'city')}
+                  onChange={setUserInfo.bind(null, 'billingCity')}
                   required
                 />
               </div>
@@ -189,7 +190,7 @@ class OrderStep2 extends Component {
                   type='text'
                   name='state'
                   id='state'
-                  onChange={setUserInfo.bind(null, 'state')}
+                  onChange={setUserInfo.bind(null, 'billingState')}
                   required
                 />
               </div>
@@ -201,7 +202,7 @@ class OrderStep2 extends Component {
                   type='text'
                   name='zipCode'
                   id='zipCode'
-                  onChange={setUserInfo.bind(null, 'zipCode')}
+                  onChange={setUserInfo.bind(null, 'billingZipCode')}
                   required
                 />
               </div>
@@ -231,20 +232,19 @@ class OrderStep2 extends Component {
               Enter new address
             </label>
           </div>
+
           {this.state.isbillingAddressSameAsShipment ? (
-            ''
-          ) : (
             <div>
               <div className={styles.row}>
                 <div className={styles.labelInput}>
-                  <label for='address'>*Billing Address</label>
+                  <label for='address'>*Shipment Address</label>
                   <div className={styles.fieldWrapper}>
                     <input
                       type='text'
                       name='address'
                       id='address'
-                      onChange={setUserInfo.bind(null, 'address')}
-                      required
+                      value={this.state.billingAddress}
+                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
                     />
                   </div>
                 </div>
@@ -257,8 +257,7 @@ class OrderStep2 extends Component {
                       type='text'
                       name='city'
                       id='city'
-                      onChange={setUserInfo.bind(null, 'city')}
-                      required
+                      onChange={setUserInfo.bind(null, 'shipmentCity')}
                     />
                   </div>
                 </div>
@@ -269,8 +268,7 @@ class OrderStep2 extends Component {
                       type='text'
                       name='state'
                       id='state'
-                      onChange={setUserInfo.bind(null, 'state')}
-                      required
+                      onChange={setUserInfo.bind(null, 'shipmentState')}
                     />
                   </div>
                 </div>
@@ -281,8 +279,58 @@ class OrderStep2 extends Component {
                       type='text'
                       name='zipCode'
                       id='zipCode'
-                      onChange={setUserInfo.bind(null, 'zipCode')}
-                      required
+                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='address'>*Shipment Address</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='address'
+                      id='address'
+                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.row}>
+                <div className={styles.labelInput}>
+                  <label for='city'>*City</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='city'
+                      id='city'
+                      onChange={setUserInfo.bind(null, 'shipmentCity')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='state'>*State</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='state'
+                      id='state'
+                      onChange={setUserInfo.bind(null, 'shipmentState')}
+                    />
+                  </div>
+                </div>
+                <div className={styles.labelInput}>
+                  <label for='zipCode'>*Zip Code</label>
+                  <div className={styles.fieldWrapper}>
+                    <input
+                      type='text'
+                      name='zipCode'
+                      id='zipCode'
+                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
                     />
                   </div>
                 </div>
