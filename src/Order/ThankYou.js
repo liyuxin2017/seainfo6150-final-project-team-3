@@ -1,7 +1,11 @@
 import React from 'react';
 
+import styles from './ThankYou.module.css';
+
 const ThankYou = () => (
-  <h1>Thank You!</h1>
+  <div className={styles.container}>
+    <img src="/assets/img/information/thank_you.png" className={styles.image} alt="thankYou"/>
+  </div>
 );
 
 export default ThankYou;
