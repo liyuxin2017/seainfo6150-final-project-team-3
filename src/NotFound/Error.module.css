@@ -1,0 +1,21 @@
+.errorbutton{
+	 margin-top: 80px;
+  text-align: center;
+}
+
+.link {
+  background-color: rgb(21, 21, 71);
+  color: aliceblue;
+  font-size: 1em;
+  text-decoration: none;
+  padding:  0.5em;
+}
+
+.style{
+	font-family: "Times New Roman", sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 10px;
+  text-align: center;
+}
