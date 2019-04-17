@@ -133,7 +133,7 @@ class OrderStep2 extends Component {
         onSubmit={this.handleSubmit.bind(this)}
         className={styles.container}
       >
-        <fieldset>
+        <fieldset className={styles.fieldset}>
           <legend>Personal Information</legend>
 
           <div className={styles.row}>
@@ -241,7 +241,7 @@ class OrderStep2 extends Component {
             </div>
           </div>
         </fieldset>
-        <fieldset className={styles.textFields}>
+        <fieldset className={`${styles.textFields} ${styles.fieldset}`}>
           <legend>Address Information</legend>
           <div className={styles.row}>
             <div className={styles.labelInput}>
@@ -355,6 +355,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment Address')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -373,6 +374,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment City')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -389,6 +391,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment State')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -405,6 +408,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -422,6 +426,7 @@ class OrderStep2 extends Component {
                       name='address'
                       id='address'
                       onChange={setUserInfo.bind(null, 'Shipment Address')}
+                      required
                     />
                   </div>
                 </div>
@@ -436,6 +441,7 @@ class OrderStep2 extends Component {
                       name='city'
                       id='city'
                       onChange={setUserInfo.bind(null, 'Shipment City')}
+                      required
                     />
                   </div>
                 </div>
@@ -448,6 +454,7 @@ class OrderStep2 extends Component {
                       name='state'
                       id='state'
                       onChange={setUserInfo.bind(null, 'Shipment State')}
+                      required
                     />
                   </div>
                 </div>
@@ -460,6 +467,7 @@ class OrderStep2 extends Component {
                       name='zipCode'
                       id='zipCode'
                       onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
+                      required
                     />
                     {this.state.isZipCodeValid ? (
                       ''
@@ -475,9 +483,9 @@ class OrderStep2 extends Component {
           )}
         </fieldset>
 
-        <fieldset className={styles.submit}>
+        <fieldset className={`${styles.submit} ${styles.fieldset}`}>
           <input
-            className={styles.submit}
+            className={styles.submitInput}
             type='submit'
             value='Go to summary'
           />

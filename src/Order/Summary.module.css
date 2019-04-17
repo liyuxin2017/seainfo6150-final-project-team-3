@@ -4,7 +4,7 @@
   border: none;
   text-align: right;
 }
-.submit input {
+.submitInput {
   background-color: rgb(21, 21, 71);
   color: aliceblue;
   font-size: 1.5em;
@@ -12,17 +12,29 @@
   border-radius: 3em;
   padding: 0 2em;
 }
+
+.printPanel {
+  text-align: right;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
 .display {
   display: table;
   list-style: none;
-}
-
-ul {
   line-height: 2em;
 }
 
+.userInformation,
+.productInformation {
+  flex: auto;
+}
+
 @media print {
-  .button {
+  .submitInput {
     visibility: hidden;
   }
 }

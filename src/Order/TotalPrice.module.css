@@ -1,0 +1,18 @@
+.total {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 1em 0;
+}
+
+.cost {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.optionName {
+  flex: auto;
+}
