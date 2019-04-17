@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from "react-router-dom";
-import PowerOptions from "./orderStep1/PowerOptions";
-import InteriorOptions from "./orderStep1/InteriorOptions";
 import ExteriorOptions from "./orderStep1/ExteriorOptions";
-import PremiumFeatures from "./orderStep1/PremiumFeatures";
 import styles from "./OrderStep1.module.css";
 
 class OrderStep1 extends Component {
@@ -24,9 +21,7 @@ class OrderStep1 extends Component {
 
   render() {
     const {
-      options,
       selectedProductId,
-      setProductOption,
         categories
     } = this.props;
     let selectedProductCategoryId = null;
@@ -62,7 +57,7 @@ class OrderStep1 extends Component {
                         {/*options={this.props.options}/>}*/}
                 </div>
                 <div className={styles["bottom-panel"]}>
-                    <img className={styles.image} src={category.img.lg} />
+                    <img className={styles.image} alt="CarImage" src={category.img.lg} />
                 </div>
             </div>
 

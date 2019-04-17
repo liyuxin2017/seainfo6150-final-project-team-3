@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from "./OptionsSeperator.module.css";
 
-class OptionsSeperator extends React.Component {
-    constructor(props) {
+class OptionsSeperator extends Component {
+    /*constructor(props) {
         super(props);
-    }
+    }*/
 
     checkIfOptionAllowed(option) {
         if(this.props.allowedValues.indexOf(option.id) !== -1) {
