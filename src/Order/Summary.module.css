@@ -12,11 +12,13 @@
   border-radius: 3em;
   padding: 0 2em;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
 .display {
   display: table;
   list-style: none;
-}
-
-ul {
   line-height: 2em;
 }

@@ -34,50 +34,46 @@ class Summary extends Component {
     console.log('Summary', this.props);
 
     const selectedProduct = this.props.products[selectedProductId];
+    const category = categories[selectedProduct.categoryId];
 
     if (!selectedProductId) {
       return <div>Please choose a product first!</div>;
     }
-    console.log(
-      'selectedOptions: ' +
-        selectedOptions +
-        ' selectedProductId: ' +
-        selectedProductId +
-        ' userInfo: ' +
-        userInfo
-    );
+
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/thank-you' />
     ) : (
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          {/* This will iterate through all the selected options so you can see what the user chose. */}
-          <img
-            src={selectedProduct.image}
-            className={styles.image}
-            alt='This is image'
-          />
-          <ul>
-            {Object.keys(selectedOptions).map(option => {
-              const originalOption = options[option];
-              const selectedValue = selectedOptions[option];
+          <button onClick={this.printPage}>print</button>
+          <div className={styles.row}>
+            <div className={styles.userInformation}>
+              {/* This will iterate through all the user info so you can see what the user entered. */}
+              <ul className={styles.display}>
+                {Object.keys(userInfo).map(info => (
+                  <li key={info}>
+                    {info}: {userInfo[info]}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.productInformation}>
+              <img className={styles.image} src={category.img.sm} alt='image' />
+              {/* This will iterate through all the selected options so you can see what the user chose. */}
+              <ul className={styles.display}>
+                {Object.keys(selectedOptions).map(option => {
+                  const originalOption = options[option];
+                  const selectedValue = selectedOptions[option];
 
-              return (
-                <li key={option}>
-                  {originalOption.name}: {selectedValue}
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* This will iterate through all the user info so you can see what the user entered. */}
-          <ul className={styles.display}>
-            {Object.keys(userInfo).map(info => (
-              <li key={info}>
-                {info}: {userInfo[info]}
-              </li>
-            ))}
-          </ul>
+                  return (
+                    <li key={option}>
+                      {originalOption.name}: {selectedValue}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
 
           <TotalPrice
             options={options}
@@ -89,7 +85,6 @@ class Summary extends Component {
             <input type='submit' value='Submit order' />
           </fieldset>
         </form>
-        <button onClick={this.printPage}>print</button>
       </div>
     );
   }
