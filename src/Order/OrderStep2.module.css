@@ -5,23 +5,10 @@
   margin-left: 20%;
 }
 
-.fieldset {
-  display: inline;
-  min-width: 600px;
-  margin-top: 5%;
-}
-
 input:not(.submit) {
   height: 4em;
   vertical-align: text-bottom;
   width: -webkit-fill-available;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  line-height: 2em;
-  margin-top: 1em;
 }
 
 .labelInput {
@@ -76,4 +63,18 @@ input:read-only {
   color: aliceblue;
   border-radius: 3em;
   font-size: 1em;
+}
+
+@media (min-width: 600px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    line-height: 2em;
+    margin-top: 1em;
+  }
+  .fieldset {
+    display: inline;
+    min-width: 600px;
+    margin-top: 5%;
+  }
 }
