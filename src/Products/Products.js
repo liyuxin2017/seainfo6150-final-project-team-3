@@ -11,22 +11,22 @@ const Products = ({ categories, products }) => {
       if (available){
         return (
           <div>
-<<<<<<< HEAD
+
           <img className={styles.image} src="https://cdn2.iconfinder.com/data/icons/weby-flat-vol-1/512/1_Approved-check-checkbox-confirm-green-success-tick-512.png" alt="home" />
-=======
-          <img className={styles.image} src="https://cdn2.iconfinder.com/data/icons/weby-flat-vol-1/512/1_Approved-check-checkbox-confirm-green-success-tick-512.png" alt='product'/>
->>>>>>> cb9da454cee9a54740d2b4da011d68cebd83804f
+
+          
+
           Available
           </div>
           )
       }
         return (
         <div>
-<<<<<<< HEAD
+
         <img className={styles.image} src="https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100190/69079066-out-of-stock-red-leather-label-or-price-tag-on-white-background-vector-illustration.jpg" alt="home" />
-=======
-        <img className={styles.image} src="https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100190/69079066-out-of-stock-red-leather-label-or-price-tag-on-white-background-vector-illustration.jpg" alt='product'/>
->>>>>>> cb9da454cee9a54740d2b4da011d68cebd83804f
+
+       
+
         Out of Stock
         </div>
         )
