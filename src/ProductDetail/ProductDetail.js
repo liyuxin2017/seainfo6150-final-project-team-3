@@ -54,8 +54,6 @@ class ProductDetail extends PureComponent {
 
           <img src={category.img.lg} className={styles.image} alt="home" />
 
-          
-
               <div className={styles.productTextInfo}>
 
                 <span> Model: {product.title}</span>
