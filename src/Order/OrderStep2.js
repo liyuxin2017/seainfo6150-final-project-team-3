@@ -241,7 +241,7 @@ class OrderStep2 extends Component {
             </div>
           </div>
         </fieldset>
-        <fieldset className='{styles.textFields} {styles.fieldset}'>
+        <fieldset className={`${styles.textFields} ${styles.fieldset}`}>
           <legend>Address Information</legend>
           <div className={styles.row}>
             <div className={styles.labelInput}>
@@ -355,6 +355,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment Address')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -373,6 +374,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment City')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -389,6 +391,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment State')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -405,6 +408,7 @@ class OrderStep2 extends Component {
                           : ''
                       }
                       onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
+                      readOnly
                     />
                   </div>
                 </div>
@@ -479,9 +483,9 @@ class OrderStep2 extends Component {
           )}
         </fieldset>
 
-        <fieldset className='{styles.submit} {styles.fieldset}'>
+        <fieldset className={`${styles.submit} ${styles.fieldset}`}>
           <input
-            className={styles.submit}
+            className={styles.submitInput}
             type='submit'
             value='Go to summary'
           />
