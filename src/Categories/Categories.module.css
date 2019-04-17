@@ -45,3 +45,10 @@
     margin: 0;
   }
 }
+
+@media print {
+  .container {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+}
