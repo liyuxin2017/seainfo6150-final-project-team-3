@@ -23,6 +23,19 @@ ul {
 
 @media print {
   .button {
+    font-size: 0.01px;
+    margin: 0;
+    padding: 0;
+    border: 0;
     visibility: hidden;
+  }
+
+  .display {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit {
+    font-size: 0.01px;
   }
 }
