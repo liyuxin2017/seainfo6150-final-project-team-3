@@ -13,8 +13,10 @@
 
 input:not(.submit) {
   height: 4em;
+  vertical-align: text-bottom;
   width: -webkit-fill-available;
 }
+
 .row {
   display: flex;
   flex-direction: row;

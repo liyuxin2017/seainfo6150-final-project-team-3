@@ -17,7 +17,6 @@ export const setUserInfo = ({ id, e }) => (dispatch, getState) => {
 
 export const setProductOption = ({ id, e }) => (dispatch, getState) => {
 
-
   dispatch(removeError());
   console.log("Hello World");
   console.log(e.target);
@@ -30,6 +29,7 @@ export const setProductOption = ({ id, e }) => (dispatch, getState) => {
   console.log(e.target);
   console.log(e.target.name);
   console.log(value);
+
   switch (id) {
     case 'color':
       dispatch(setColor(value));
@@ -110,6 +110,12 @@ export const setProductOption = ({ id, e }) => (dispatch, getState) => {
       dispatch(setMonogram(value));
       break;
     default:
+  }
+
+  if(value==="No Preference"){
+      console.log("Removing " + id);
+      // removeOption(id);
+      dispatch(removeOption(id));
   }
 };
 

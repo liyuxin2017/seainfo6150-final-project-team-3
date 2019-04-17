@@ -82,9 +82,16 @@ class Summary extends Component {
           />
 
           <fieldset className={styles.submit}>
-            <input type='submit' value='Submit order' />
+            <input
+              type='submit'
+              value='Submit order'
+              className={styles.button}
+            />
           </fieldset>
         </form>
+        <button onClick={this.printPage} className={styles.button}>
+          print
+        </button>
       </div>
     );
   }

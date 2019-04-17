@@ -39,27 +39,27 @@ class OrderStep1 extends Component {
         opt = (
             <div className={styles.container}>
                 
-                <div className={styles["top-panel"]}>
-                    {<PowerOptions className={styles["panel"]}
-                                      setProductOption = {this.props.setProductOption}
-                                      selectedProduct={selectedProductCategoryId}
-                                        selectedOptions={this.props.selectedOptions}
-                                      options={this.props.options}/>}
-                    {<InteriorOptions
-                        setProductOption = {this.props.setProductOption}
-                        selectedProduct={selectedProductCategoryId}
-                        selectedOptions={this.props.selectedOptions}
-                        options={this.props.options}/>}
+                <div>
+                    {/*{<PowerOptions className={styles["panel"]}*/}
+                                      {/*setProductOption = {this.props.setProductOption}*/}
+                                      {/*selectedProduct={selectedProductCategoryId}*/}
+                                        {/*selectedOptions={this.props.selectedOptions}*/}
+                                      {/*options={this.props.options}/>}*/}
+                    {/*{<InteriorOptions*/}
+                        {/*setProductOption = {this.props.setProductOption}*/}
+                        {/*selectedProduct={selectedProductCategoryId}*/}
+                        {/*selectedOptions={this.props.selectedOptions}*/}
+                        {/*options={this.props.options}/>}*/}
                     {<ExteriorOptions
                         setProductOption = {this.props.setProductOption}
                         selectedProduct={selectedProductCategoryId}
                         selectedOptions={this.props.selectedOptions}
                         options={this.props.options}/>}
-                    {<PremiumFeatures
-                        setProductOption = {this.props.setProductOption}
-                        selectedProduct={selectedProductCategoryId}
-                        selectedOptions={this.props.selectedOptions}
-                        options={this.props.options}/>}
+                    {/*{<PremiumFeatures*/}
+                        {/*setProductOption = {this.props.setProductOption}*/}
+                        {/*selectedProduct={selectedProductCategoryId}*/}
+                        {/*selectedOptions={this.props.selectedOptions}*/}
+                        {/*options={this.props.options}/>}*/}
                 </div>
                 <div className={styles["bottom-panel"]}>
                     <img className={styles.image} src={category.img.lg} />

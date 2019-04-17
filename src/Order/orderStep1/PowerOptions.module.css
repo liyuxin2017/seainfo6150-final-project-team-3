@@ -10,8 +10,7 @@
     font-style: italic;
     font-weight: bold;
     font-size: 25px;
-    
-}
+ }
 
 .content {
     cursor: pointer;
@@ -20,3 +19,14 @@
     padding: 15px;
     font-size: 20px;
 }
+
+.top-panel {
+    position: relative;
+    width: auto;
+    display: inline-flex;
+}
+
+.main_div {
+    padding: 10%;
+}
+

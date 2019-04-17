@@ -8,16 +8,30 @@
     height: 5em;
     display: inline;
     text-align: justify;
-}
+    }
 
 .main_text {
     font-weight: bold;
 }
+.linespace{
+
+}
 
 .check_box_input {
     display: inline;
+    height: 0em;
 }
 
 .select_width {
-width: 50%;
+}
+
+tr p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0em;
+    margin-inline-end: 0em;
+}
+
+td {
+    white-space: nowrap;
 }

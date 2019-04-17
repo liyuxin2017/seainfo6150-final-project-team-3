@@ -30,7 +30,7 @@ const Products = ({ categories, products }) => {
       if (pro && available){
         return (
           <div> 
-          On offer:
+          
           Was ${product.price} Now just ${product.sale}
           </div>
           )
@@ -42,17 +42,30 @@ const Products = ({ categories, products }) => {
         )
       
     }
+    function Offer(props){
+      const pro=product.sale;
+      const available=product.available
+      if (pro && available){
+        return "              ON OFFER!!"
+      }
+      return null 
+    }
     return (
       <div key={product.id}>
+       
+
         <div>
          <Link to={`/products/${product.categoryId}/${product.id}`}>
           {<img src={category.img.sm} />}
-          </Link>
+         </Link>
         </div>
-       <div className={styles.detail}>
+       <div className={styles.detail}> 
+       <div className={styles.animation}>
        <Link to={`/products/${product.categoryId}/${product.id}`}>
         {product.title}
         </Link>
+        <Offer  pro={product.sale} />
+        </div>
         <Availability available={product.available} />
         <Price pro={product.sale} />
        </div>  
