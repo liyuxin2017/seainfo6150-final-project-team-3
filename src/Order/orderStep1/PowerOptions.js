@@ -4,7 +4,7 @@ import styles from './PowerOptions.module.css'
 import OptionsSeperator from "./OptionsSeperator";
 
 
-class PowerOptions extends React.Component {
+class PowerOptions extends Component {
     constructor(props) {
         super(props);
         this.state = {
