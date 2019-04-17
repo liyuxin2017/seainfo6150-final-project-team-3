@@ -4,7 +4,7 @@ import styles from './PowerOptions.module.css'
 import OptionsSeperator from "./OptionsSeperator";
 
 
-class PowerOptions extends React.Component {
+class PowerOptions extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +25,7 @@ class PowerOptions extends React.Component {
     render() {
         return (
             <div>
-                <div onClick={(e)=>this.togglePanel(e)} className={styles.header}>Power Options</div>
+                <div onClick={(e)=>this.togglePanel(e)} className={styles.header + " "+styles.responsive}>Power Options</div>
                 {
                     this.state.open ? (
                         <div className={styles.content}>

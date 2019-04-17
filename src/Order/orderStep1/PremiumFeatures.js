@@ -4,7 +4,7 @@ import styles from './PowerOptions.module.css'
 import OptionsSeperator from "./OptionsSeperator";
 
 
-class PremiumFeatures extends React.Component {
+class PremiumFeatures extends Component {
     constructor(props) {
         super(props);
         this.state = {

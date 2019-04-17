@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from "./OptionsSeperator.module.css";
 
-class OptionsSeperator extends React.Component {
-    constructor(props) {
+class OptionsSeperator extends Component {
+    /*constructor(props) {
         super(props);
-    }
+    }*/
 
     checkIfOptionAllowed(option) {
         if(this.props.allowedValues.indexOf(option.id) !== -1) {
@@ -85,11 +85,11 @@ class OptionsSeperator extends React.Component {
     }
 
     getRadioTypeOptions(option) {
-        console.log("Setting radio type");
+        /*console.log("Setting radio type");
         console.log(this.props.selectedOptions['hasRadio']);
-        console.log(option.id);
+        console.log(option.id);*/
         if (option.id === 'radioType') {
-            console.log("Inside Set radio");
+           /* console.log("Inside Set radio");*/
             let types = ["basic", "medium", "fancy"];
             Object.entries(option.values).forEach(([key, val]) => {
                     types = val;
@@ -159,7 +159,7 @@ class OptionsSeperator extends React.Component {
                 });
             }
             if (radio_flag) {
-                return <div className={styles.linespace}>
+                return <div>
                     <table>
                         <tr>
                             <td> <p className={styles.main_text +" " + styles.check_box_input}>{option.name} </p>
@@ -193,7 +193,7 @@ class OptionsSeperator extends React.Component {
             optionItems = this.getHoodOrnaments(option);
         }
         if(optionItems != null) {
-            return <div className={styles.linespace}>
+            return <div>
                 <table>
                     <tr><p className={styles.main_text}>{option.name}</p></tr>
                     <tr>{optionItems}</tr>
@@ -241,10 +241,10 @@ class OptionsSeperator extends React.Component {
         }
 
         if(optionItems != null) {
-            return <div id={option.name}>
+            return <div id={option.name + " "+ styles.responsive}>
                 <table>
                 <tr>
-                    <p className={styles.main_text + " " + styles.linespace}>{option.name} </p></tr>
+                    <p className={styles.main_text}>{option.name} </p></tr>
                 {
                     optionItems != null ?
                         <tr><select className={styles.select_width}
@@ -263,8 +263,6 @@ class OptionsSeperator extends React.Component {
     }
 
     getOptions() {
-        console.log("Ssd");
-        console.log(this.props.selectedOptions);
         return Object.values(this.props.options).map(option => {
             if(!this.checkIfOptionAllowed(option)) {
                 return false;

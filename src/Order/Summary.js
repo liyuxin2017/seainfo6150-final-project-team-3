@@ -11,7 +11,6 @@ class Summary extends Component {
     this.state = {
       submittedSuccessfully: false
     };
-    console.log(props);
   }
 
   handleSubmit() {
@@ -57,12 +56,12 @@ class Summary extends Component {
       <Redirect to='/order/thank-you' />
     ) : (
       <div>
+        <div className={styles.printPanel}>
+          <button onClick={this.printPage} className={styles.button}>
+            print
+          </button>
+        </div>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className={styles.printPanel}>
-            <button onClick={this.printPage} className={styles.button}>
-              print
-            </button>
-          </div>
           <div className={styles.row}>
             <div className={styles.userInformation}>
               {/* This will iterate through all the user info so you can see what the user entered. */}
@@ -75,7 +74,7 @@ class Summary extends Component {
               </ul>
             </div>
             <div className={styles.productInformation}>
-              <img className={styles.image} src={category.img.sm} alt='image' />
+              <img className={styles.image} src={category.img.sm} alt='vehicle' />
               {/* This will iterate through all the selected options so you can see what the user chose. */}
               <ul className={styles.display}>
                 {Object.keys(selectedOptions).map(option => {

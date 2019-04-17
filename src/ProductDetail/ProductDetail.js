@@ -18,8 +18,8 @@ class ProductDetail extends PureComponent {
           )
         }
           return (
-            <div> Price: ${product.price}</div>  
-          ) 
+            <div> Price: ${product.price}</div>
+          )
          }
 
     function OrderLink(props){
@@ -51,9 +51,13 @@ class ProductDetail extends PureComponent {
           <span>{product.title}</span>
         </div>
         <div className={styles.productInfo}>
+
           <img src={category.img.lg} className={styles.image} alt="home" />
+
+          <img src={category.img.lg} className={styles.image} alt="product"/>
+
               <div className={styles.productTextInfo}>
-                   
+
                 <span> Model: {product.title}</span>
                 <br />
                 <span> Year: {product.year}</span>
