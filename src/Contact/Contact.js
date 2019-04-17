@@ -4,6 +4,10 @@ import styles from './Contact.module.css';
 
 const Contact = () => (
   <div className={styles.container}>
+    <div className={styles.information}>Email: VehicleMart@mail.com
+      <br/>Phone: 800-800-8888
+      <br/>Address: 225 Terry Ave N, Seattle, WA 98109
+    </div>
   <form className={styles.form}>
     <fieldset className={styles.leftField}>
       <legend>Info</legend>
