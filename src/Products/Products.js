@@ -11,14 +11,14 @@ const Products = ({ categories, products }) => {
       if (available){
         return (
           <div>
-          <img className={styles.image} src="https://cdn2.iconfinder.com/data/icons/weby-flat-vol-1/512/1_Approved-check-checkbox-confirm-green-success-tick-512.png" />
+          <img className={styles.image} src="https://cdn2.iconfinder.com/data/icons/weby-flat-vol-1/512/1_Approved-check-checkbox-confirm-green-success-tick-512.png" alt="home" />
           Available
           </div>
           )
       }
         return (
         <div>
-        <img className={styles.image} src="https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100190/69079066-out-of-stock-red-leather-label-or-price-tag-on-white-background-vector-illustration.jpg" />
+        <img className={styles.image} src="https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100190/69079066-out-of-stock-red-leather-label-or-price-tag-on-white-background-vector-illustration.jpg" alt="home" />
         Out of Stock
         </div>
         )
