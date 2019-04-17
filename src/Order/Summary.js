@@ -11,7 +11,6 @@ class Summary extends Component {
     this.state = {
       submittedSuccessfully: false
     };
-    console.log(props);
   }
 
   handleSubmit() {
