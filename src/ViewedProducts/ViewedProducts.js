@@ -13,7 +13,7 @@ const ViewedProducts = ({ categories, products }) => {
     return (
       <div key={`${product.id}-${index}`}>
         <Link to={`/products/${category.id}/${product.id}`}>
-          <img src={category.img.sm} className={styles.image}/>
+          <img src={category.img.sm} className={styles.image} alt="viewedProductss"/>
         </Link>
       </div>
     );
