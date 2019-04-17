@@ -34,7 +34,7 @@ class OptionsSeperator extends React.Component {
             let optionItems = [];
             optionItems.push(<option value={null}>No Preference</option>);
             for (let i = 0; i<colors.length; i++ ) {
-                optionItems.push(<option value={colors[i]}>{colors[i]}</option>);
+                optionItems.push(<option value={colors[i]} style={colorDisplay(colors[i])}>{colors[i]}</option>);
             }
             return optionItems;
         }
