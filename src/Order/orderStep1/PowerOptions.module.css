@@ -1,7 +1,7 @@
 .header {
     cursor: pointer;
     /*border: solid 1px #f2f2f2;*/
-    padding: 15px;
+    padding: 0.938em;
     /*background-color: #0089CC;*/
     color: black;
     text-align: center;
@@ -9,15 +9,15 @@
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 1.5em;
  }
 
 .content {
     cursor: pointer;
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
-    padding: 15px;
-    font-size: 20px;
+    padding: 0.938em;
+    font-size: 1.25em;
 }
 
 .top-panel {
@@ -28,5 +28,11 @@
 
 .main_div {
     padding: 10%;
+}
+
+@media screen and (max-width:450px) {
+    .top-panel .main_div .header .content {
+        width:100%;
+    }
 }
 

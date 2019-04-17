@@ -25,7 +25,7 @@ class PowerOptions extends Component {
     render() {
         return (
             <div>
-                <div onClick={(e)=>this.togglePanel(e)} className={styles.header}>Power Options</div>
+                <div onClick={(e)=>this.togglePanel(e)} className={styles.header + " "+styles.responsive}>Power Options</div>
                 {
                     this.state.open ? (
                         <div className={styles.content}>

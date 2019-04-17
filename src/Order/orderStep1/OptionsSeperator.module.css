@@ -13,9 +13,7 @@
 .main_text {
     font-weight: bold;
 }
-.linespace{
 
-}
 
 .check_box_input {
     display: inline;
@@ -35,3 +33,10 @@ tr p {
 td {
     white-space: nowrap;
 }
+
+@media screen and (max-width:450px) {
+        .main_text .option_image{
+            width:100%;
+           /* grid-template-columns: 50% 50%;*/
+        }
+    }
