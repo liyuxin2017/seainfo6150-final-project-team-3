@@ -32,7 +32,7 @@ class OrderStep1 extends Component {
         selectedProductCategoryId = selectedProduct.categoryId;
         const category = categories[selectedProductCategoryId];
         opt = (
-            <div className={styles.container}>
+            <div className={styles.container +" " + styles.responsive }>
                 
                 <div>
                     {/*{<PowerOptions className={styles["panel"]}*/}
