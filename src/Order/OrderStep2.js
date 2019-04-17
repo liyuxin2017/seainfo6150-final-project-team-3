@@ -13,8 +13,8 @@ class OrderStep2 extends Component {
       isLastNameValid: true,
       isPhoneNumberValid: true,
       isCellNumberValid: true,
-      isbillingAddressSameAsShipment: false,
-      billingAddress: ''
+      isZipCodeValid: true,
+      isbillingAddressSameAsShipment: false
     };
   }
 
@@ -24,27 +24,107 @@ class OrderStep2 extends Component {
     });
   }
 
-  componentDidMount() {
-    let labelsArray = document.querySelectorAll('label');
-    labelsArray.forEach(function(elem) {
-      elem.addEventListener('click', function() {
-        elem.setAttribute('style', 'margin-top:0');
+  componentDidMount() {}
+
+  setFirstNameValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^[a-zA-Z]{2,20}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isFirstNameValid: true
       });
+    } else {
+      this.setState({
+        isFirstNameValid: false
+      });
+    }
+    setUserInfo('First Name', e);
+  };
+  setLastNameValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^[a-zA-Z]{2,20}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isLastNameValid: true
+      });
+    } else {
+      this.setState({
+        isLastNameValid: false
+      });
+    }
+    setUserInfo('Last Name', e);
+  };
+  setPhoneNumberValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^\d{10}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isPhoneNumberValid: true
+      });
+    } else {
+      this.setState({
+        isPhoneNumberValid: false
+      });
+    }
+    setUserInfo('Phone Number', e);
+  };
+  setCellNumberValid = (e, setUserInfo) => {
+    const value = e.target.value;
+    const regName = /^\d{10}$/g;
+    if (regName.test(value)) {
+      this.setState({
+        isCellNumberValid: true
+      });
+    } else {
+      this.setState({
+        isCellNumberValid: false
+      });
+    }
+    setUserInfo('Cell Number', e);
+  };
+
+  setBillingAddressSameAsShipment = () => {
+    this.setState({
+      isbillingAddressSameAsShipment: true
     });
+  };
+
+  setBillingAddressDifferentFromShipment = () => {
+    this.setState({
+      isbillingAddressSameAsShipment: false
+    });
+  };
+
+  setBillingAddress(e, setUserInfo) {
+    setUserInfo('Billing Address', e);
+    setUserInfo('Shipment Address', e);
+  }
+  setBillingCity(e, setUserInfo) {
+    setUserInfo('Billing City', e);
+    setUserInfo('Shipment City', e);
+  }
+  setBillingState(e, setUserInfo) {
+    setUserInfo('Billing State', e);
+    setUserInfo('Shipment State', e);
+  }
+  setBillingZipCode(e, setUserInfo) {
+    const value = e.target.value;
+    const regZip = /^\d{5}$/g;
+    if (regZip.test(value)) {
+      this.setState({
+        isZipCodeValid: true
+      });
+    } else {
+      this.setState({
+        isZipCodeValid: false
+      });
+    }
+    setUserInfo('Billing Zip Code', e);
+    setUserInfo('Shipment Zip Code', e);
   }
 
-  setFirstNameValid = () => {
-    if (this.state.isFirstNameValid) {
-      this.state.isFirstNameValid = true;
-    } else this.state.isFirstNameValid = false;
-  };
-  setBillingAddressSameAsShipment = () => {
-    this.state.isbillingAddressSameAsShipment = !this.state
-      .isbillingAddressSameAsShipment;
-  };
-
   render() {
-    const { options, selectedProductId, setUserInfo } = this.props;
+    const { options, selectedProductId, userInfo, setUserInfo } = this.props;
 
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/summary' />
@@ -58,38 +138,45 @@ class OrderStep2 extends Component {
 
           <div className={styles.row}>
             <div className={styles.labelInput}>
-              <label for='userFirstName'>*First Name</label>
+              <label htmlFor='userFirstName'>*First Name</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='userFirstName'
                   id='userFirstName'
-                  onChange={this.setFirstNameValid()}
-                  onChange={setUserInfo.bind(null, 'userFirstName')}
+                  onChange={e => {
+                    this.setFirstNameValid(e, setUserInfo);
+                  }}
                   required
                 />
                 {this.state.isFirstNameValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>First Name should be 2-20 letters</p>
+                  <p className={styles.error}>
+                    First Name should be 2-20 letters
+                  </p>
                 )}
               </div>
             </div>
 
             <div className={styles.labelInput}>
-              <label for='userLastName'>*Last Name</label>
+              <label htmlFor='userLastName'>*Last Name</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='userLastName'
                   id='userLastName'
-                  onChange={setUserInfo.bind(null, 'userLastName')}
+                  onChange={e => {
+                    this.setLastNameValid(e, setUserInfo);
+                  }}
                   required
                 />
                 {this.state.isLastNameValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>Last Name should be 2-20 letters</p>
+                  <p className={styles.error}>
+                    Last Name should be 2-20 letters
+                  </p>
                 )}
               </div>
             </div>
@@ -97,12 +184,12 @@ class OrderStep2 extends Component {
 
           <div className={styles.row}>
             <div className={styles.labelInput}>
-              <label for='dateOfBirth'>*Date of birth:</label>
+              <label htmlFor='dateOfBirth'>*Date of birth:</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='date'
                   id='dateOfBirth'
-                  onChange={setUserInfo.bind(null, 'date')}
+                  onChange={setUserInfo.bind(null, 'Date')}
                   required
                 />
               </div>
@@ -111,19 +198,21 @@ class OrderStep2 extends Component {
 
           <div className={styles.row}>
             <div className={styles.labelInput}>
-              <label for='phoneNumber'>*Phone Number</label>
+              <label htmlFor='phoneNumber'>*Phone Number</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='phoneNumber'
                   id='phoneNumber'
-                  onChange={setUserInfo.bind(null, 'phoneNumber')}
+                  onChange={e => {
+                    this.setPhoneNumberValid(e, setUserInfo);
+                  }}
                   required
                 />
                 {this.state.isPhoneNumberValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>
+                  <p className={styles.error}>
                     Phone Number should be a 10-digit number
                   </p>
                 )}
@@ -131,18 +220,20 @@ class OrderStep2 extends Component {
             </div>
 
             <div className={styles.labelInput}>
-              <label for='cellNumber'>Cell Number</label>
+              <label htmlFor='cellNumber'>Cell Number</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='cellNumber'
                   id='cellNumber'
-                  onChange={setUserInfo.bind(null, 'cellNumber')}
+                  onChange={e => {
+                    this.setCellNumberValid(e, setUserInfo);
+                  }}
                 />
                 {this.state.isCellNumberValid ? (
                   ''
                 ) : (
-                  <p class={styles.error}>
+                  <p className={styles.error}>
                     Cell Number should be a 10-digit number
                   </p>
                 )}
@@ -154,16 +245,14 @@ class OrderStep2 extends Component {
           <legend>Address Information</legend>
           <div className={styles.row}>
             <div className={styles.labelInput}>
-              <label for='address'>*Billing Address</label>
+              <label htmlFor='address'>*Billing Address</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='address'
                   id='address'
-                  onChange={setUserInfo.bind(null, 'billingAddress')}
                   onChange={e => {
-                    this.setState({ billingAddress: e.target.value });
-                    console.log('billingAddress' + this.state.billingAddress);
+                    this.setBillingAddress(e, setUserInfo);
                   }}
                   required
                 />
@@ -172,39 +261,50 @@ class OrderStep2 extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.labelInput}>
-              <label for='city'>*City</label>
+              <label htmlFor='city'>*City</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='city'
                   id='city'
-                  onChange={setUserInfo.bind(null, 'billingCity')}
+                  onChange={e => {
+                    this.setBillingCity(e, setUserInfo);
+                  }}
                   required
                 />
               </div>
             </div>
             <div className={styles.labelInput}>
-              <label for='state'>*State</label>
+              <label htmlFor='state'>*State</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='state'
                   id='state'
-                  onChange={setUserInfo.bind(null, 'billingState')}
+                  onChange={e => {
+                    this.setBillingState(e, setUserInfo);
+                  }}
                   required
                 />
               </div>
             </div>
             <div className={styles.labelInput}>
-              <label for='zipCode'>*Zip Code</label>
+              <label htmlFor='zipCode'>*Zip Code</label>
               <div className={styles.fieldWrapper}>
                 <input
                   type='text'
                   name='zipCode'
                   id='zipCode'
-                  onChange={setUserInfo.bind(null, 'billingZipCode')}
+                  onChange={e => {
+                    this.setBillingZipCode(e, setUserInfo);
+                  }}
                   required
                 />
+                {this.state.isZipCodeValid ? (
+                  ''
+                ) : (
+                  <p className={styles.error}>Zip Code should be 5 letters</p>
+                )}
               </div>
             </div>
           </div>
@@ -218,17 +318,23 @@ class OrderStep2 extends Component {
               required
             />
 
-            <label className={styles.shipmentAddress} for='shipmentAddress-0'>
+            <label
+              className={styles.shipmentAddress}
+              htmlFor='shipmentAddress-0'
+            >
               Same as Billing address
             </label>
             <input
               type='radio'
               name='shipmentAddress'
               id='shipmentAddress-1'
-              onClick={this.setBillingAddressSameAsShipment}
+              onClick={this.setBillingAddressDifferentFromShipment}
               required
             />
-            <label className={styles.shipmentAddress} for='shipmentAddress-1'>
+            <label
+              className={styles.shipmentAddress}
+              htmlFor='shipmentAddress-1'
+            >
               Enter new address
             </label>
           </div>
@@ -237,49 +343,68 @@ class OrderStep2 extends Component {
             <div>
               <div className={styles.row}>
                 <div className={styles.labelInput}>
-                  <label for='address'>*Shipment Address</label>
+                  <label htmlFor='address'>*Shipment Address</label>
                   <div className={styles.fieldWrapper}>
                     <input
                       type='text'
                       name='address'
                       id='address'
-                      value={this.state.billingAddress}
-                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
+                      value={
+                        userInfo && userInfo['Billing Address']
+                          ? userInfo['Billing Address']
+                          : ''
+                      }
+                      onChange={setUserInfo.bind(null, 'Shipment Address')}
                     />
                   </div>
                 </div>
               </div>
               <div className={styles.row}>
                 <div className={styles.labelInput}>
-                  <label for='city'>*City</label>
+                  <label htmlFor='city'>*City</label>
                   <div className={styles.fieldWrapper}>
                     <input
                       type='text'
                       name='city'
                       id='city'
-                      onChange={setUserInfo.bind(null, 'shipmentCity')}
+                      value={
+                        userInfo && userInfo['Billing City']
+                          ? userInfo['Billing City']
+                          : ''
+                      }
+                      onChange={setUserInfo.bind(null, 'Shipment City')}
                     />
                   </div>
                 </div>
                 <div className={styles.labelInput}>
-                  <label for='state'>*State</label>
+                  <label htmlFor='state'>*State</label>
                   <div className={styles.fieldWrapper}>
                     <input
                       type='text'
                       name='state'
                       id='state'
-                      onChange={setUserInfo.bind(null, 'shipmentState')}
+                      value={
+                        userInfo && userInfo['Billing State']
+                          ? userInfo['Billing State']
+                          : ''
+                      }
+                      onChange={setUserInfo.bind(null, 'Shipment State')}
                     />
                   </div>
                 </div>
                 <div className={styles.labelInput}>
-                  <label for='zipCode'>*Zip Code</label>
+                  <label htmlFor='zipCode'>*Zip Code</label>
                   <div className={styles.fieldWrapper}>
                     <input
                       type='text'
                       name='zipCode'
                       id='zipCode'
-                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
+                      value={
+                        userInfo && userInfo['Billing Zip Code']
+                          ? userInfo['Billing Zip Code']
+                          : ''
+                      }
+                      onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
                     />
                   </div>
                 </div>
@@ -289,49 +414,60 @@ class OrderStep2 extends Component {
             <div>
               <div className={styles.row}>
                 <div className={styles.labelInput}>
-                  <label for='address'>*Shipment Address</label>
+                  <label htmlFor='address'>*Shipment Address</label>
                   <div className={styles.fieldWrapper}>
                     <input
+                      key='1'
                       type='text'
                       name='address'
                       id='address'
-                      onChange={setUserInfo.bind(null, 'shipmentAddress')}
+                      onChange={setUserInfo.bind(null, 'Shipment Address')}
                     />
                   </div>
                 </div>
               </div>
               <div className={styles.row}>
                 <div className={styles.labelInput}>
-                  <label for='city'>*City</label>
+                  <label htmlFor='city'>*City</label>
                   <div className={styles.fieldWrapper}>
                     <input
+                      key='2'
                       type='text'
                       name='city'
                       id='city'
-                      onChange={setUserInfo.bind(null, 'shipmentCity')}
+                      onChange={setUserInfo.bind(null, 'Shipment City')}
                     />
                   </div>
                 </div>
                 <div className={styles.labelInput}>
-                  <label for='state'>*State</label>
+                  <label htmlFor='state'>*State</label>
                   <div className={styles.fieldWrapper}>
                     <input
+                      key='3'
                       type='text'
                       name='state'
                       id='state'
-                      onChange={setUserInfo.bind(null, 'shipmentState')}
+                      onChange={setUserInfo.bind(null, 'Shipment State')}
                     />
                   </div>
                 </div>
                 <div className={styles.labelInput}>
-                  <label for='zipCode'>*Zip Code</label>
+                  <label htmlFor='zipCode'>*Zip Code</label>
                   <div className={styles.fieldWrapper}>
                     <input
+                      key='4'
                       type='text'
                       name='zipCode'
                       id='zipCode'
-                      onChange={setUserInfo.bind(null, 'shipmentZipCode')}
+                      onChange={setUserInfo.bind(null, 'Shipment Zip Code')}
                     />
+                    {this.state.isZipCodeValid ? (
+                      ''
+                    ) : (
+                      <p className={styles.error}>
+                        Zip Code should be 5 letters
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -340,7 +476,11 @@ class OrderStep2 extends Component {
         </fieldset>
 
         <fieldset className={styles.submit}>
-          <input type='submit' value='Go to summary' />
+          <input
+            className={styles.submit}
+            type='submit'
+            value='Go to summary'
+          />
         </fieldset>
       </form>
     );
@@ -350,7 +490,7 @@ class OrderStep2 extends Component {
 OrderStep2.propTypes = {
   options: PropTypes.object.isRequired,
   selectedProductId: PropTypes.string,
-  setUserInfo: PropTypes.object
+  setUserInfo: PropTypes.func
 };
 
 export default OrderStep2;
