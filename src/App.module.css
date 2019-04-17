@@ -93,3 +93,13 @@
     grid-row: 5 / 6;
   }
 }
+
+@media print {
+  .container {
+    visibility: hidden;
+  }
+
+  .mainContainer {
+    visibility: visible;
+  }
+}
