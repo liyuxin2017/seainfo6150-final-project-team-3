@@ -124,7 +124,8 @@ class OrderStep2 extends Component {
   }
 
   render() {
-    const { options, selectedProductId, userInfo, setUserInfo } = this.props;
+      /*const { options, selectedProductId, userInfo, setUserInfo } = this.props;*/
+    const { userInfo, setUserInfo } = this.props;
 
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/summary' />
