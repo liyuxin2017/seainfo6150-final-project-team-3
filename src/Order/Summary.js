@@ -56,12 +56,12 @@ class Summary extends Component {
       <Redirect to='/order/thank-you' />
     ) : (
       <div>
+        <div className={styles.printPanel}>
+          <button onClick={this.printPage} className={styles.button}>
+            print
+          </button>
+        </div>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className={styles.printPanel}>
-            <button onClick={this.printPage} className={styles.button}>
-              print
-            </button>
-          </div>
           <div className={styles.row}>
             <div className={styles.userInformation}>
               {/* This will iterate through all the user info so you can see what the user entered. */}
