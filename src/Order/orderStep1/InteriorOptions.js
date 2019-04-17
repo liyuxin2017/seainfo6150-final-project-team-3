@@ -9,7 +9,7 @@ class InteriorOptions extends React.Component {
         super(props);
         this.state = {
             open: false
-        }
+        };
         this.togglePanel = this.togglePanel.bind(this);
 
         this.allowedValues = [

@@ -33,7 +33,6 @@ class Summary extends Component {
     } = this.props;
     console.log('Summary', this.props);
 
-    const selectedProduct = this.props.products[selectedProductId];
 
     if (!selectedProductId) {
       return <div>Please choose a product first!</div>;
@@ -46,15 +45,18 @@ class Summary extends Component {
         ' userInfo: ' +
         userInfo
     );
-    return this.state.submittedSuccessfully ? (
+      const selectedProduct = this.props.products[selectedProductId];
+      let selectedProductCategoryId = selectedProduct.categoryId;
+      const category = categories[selectedProductCategoryId];
+
+      return this.state.submittedSuccessfully ? (
       <Redirect to='/order/thank-you' />
     ) : (
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
           {/* This will iterate through all the selected options so you can see what the user chose. */}
-          <img
-            src={selectedProduct.image}
-            className={styles.image}
+
+         <img className={styles.image} src={category.img.sm}
             alt='This is image'
           />
           <ul>
@@ -64,7 +66,7 @@ class Summary extends Component {
 
               return (
                 <li key={option}>
-                  {originalOption.name}: {selectedValue}
+                  {originalOption.name}: {selectedValue===true ? "YES" : selectedValue}
                 </li>
               );
             })}

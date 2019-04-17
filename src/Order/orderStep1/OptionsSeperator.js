@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from "./OptionsSeperator.module.css";
 
@@ -47,14 +47,14 @@ class OptionsSeperator extends React.Component {
             Object.values(option.values).forEach((val) => {
                 optionItems.push(<div className={styles.option_image}
                                       value={val}>
-                    <input type="checkbox"
+                    <td><input type="checkbox"
                            name={option.name}
                            value={val.id}
                            onChange={this.props.setProductOption.bind(null, option.id)}
-                           checked={this.props.selectedOptions['hoodOrnament'] === val.id}/>
+                               checked={this.props.selectedOptions['hoodOrnament'] === val.id}/>
                     <img className={styles.option_image}
                          src={val.img}
-                         alt={val.id}/>
+                         alt={val.id}/></td>
                 </div>);
             });
             return optionItems;
@@ -68,14 +68,14 @@ class OptionsSeperator extends React.Component {
             Object.values(option.values).forEach((val) => {
                 optionItems.push(<div className={styles.option_image}
                                       value={val}>
-                    <input type="checkbox"
+                        <td><input type="checkbox"
                            name={option.name}
                            value={val.id}
                            onChange={this.props.setProductOption.bind(null, option.id)}
-                           checked={this.props.selectedOptions['trunkMonkey'] === val.id}/>
-                    <img className={styles.option_image}
+                                   checked={this.props.selectedOptions['trunkMonkey'] === val.id}/>
+                        <img className={styles.option_image}
                          src={val.img.sm}
-                         alt={val.id}/>
+                             alt={val.id}/></td>
                 </div>);
 
             });
@@ -85,7 +85,11 @@ class OptionsSeperator extends React.Component {
     }
 
     getRadioTypeOptions(option) {
+        console.log("Setting radio type");
+        console.log(this.props.selectedOptions['hasRadio']);
+        console.log(option.id);
         if (option.id === 'radioType') {
+            console.log("Inside Set radio");
             let types = ["basic", "medium", "fancy"];
             Object.entries(option.values).forEach(([key, val]) => {
                     types = val;
@@ -155,18 +159,28 @@ class OptionsSeperator extends React.Component {
                 });
             }
             if (radio_flag) {
-                return <div>
-                    <p className={styles.main_text +" " + styles.check_box_input}>{option.name} </p>
-                    <input type="checkbox" name={option.name} value={option.name}
-                           onClick={this.props.setProductOption.bind(null, option.id)}
-                    checked={this.props.selectedOptions['option.name']}/>
+                return <div className={styles.linespace}>
+                    <table>
+                        <tr>
+                            <td> <p className={styles.main_text +" " + styles.check_box_input}>{option.name} </p>
+                            </td>
+                             <td>   <input type="checkbox" name={option.name} value={option.name}
+                                       onClick={this.props.setProductOption.bind(null, option.id)}
+                                       checked={this.props.selectedOptions['option.name']}/>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             } else {
                 return <div>
-                    <p className={styles.main_text +" " + styles.check_box_input}>{option.name}</p>
-                    <input type="checkbox" name={option.name} value={option.name}
+                    <table>
+                        <tr>
+                    <td><p className={styles.main_text +" " + styles.check_box_input}>{option.name}</p></td>
+                    <td><input type="checkbox" name={option.name} value={option.name}
                            onClick={this.props.setProductOption.bind(null, option.id)}
-                           checked={default_val} disabled={true}/>
+                               checked={default_val} disabled={true}/></td>
+                        </tr>
+                    </table>
                 </div>
             }
         }
@@ -179,9 +193,11 @@ class OptionsSeperator extends React.Component {
             optionItems = this.getHoodOrnaments(option);
         }
         if(optionItems != null) {
-            return <div>
-                <p className={styles.main_text}>{option.name}</p>
-                {optionItems}
+            return <div className={styles.linespace}>
+                <table>
+                    <tr><p className={styles.main_text}>{option.name}</p></tr>
+                    <tr>{optionItems}</tr>
+                </table>
             </div>;
         }
         return null;
@@ -189,8 +205,21 @@ class OptionsSeperator extends React.Component {
 
     formAllOtherOptions(option) {
 
-        if (option.id.startsWith("has") || option.id === 'trunkMonkey' || option.id === 'hoodOrnament') {
+        if (option.id.startsWith("has") ||
+            option.id === 'trunkMonkey' ||
+            option.id === 'hoodOrnament' ) {
             return null;
+        }
+
+        if(option.id === 'radioType' && !this.props.selectedOptions['hasRadio']) {
+            return  null;
+        }
+
+        if(option.id === 'numCupholders' && !this.props.selectedOptions['hasCupholders']) {
+            return  null;
+        }
+        if(option.id === 'monogram' && !this.props.selectedOptions['hasMonogrammedSteeringWheelCover']) {
+            return  null;
         }
 
         let optionItems = this.getColorOptions(option);
@@ -212,17 +241,23 @@ class OptionsSeperator extends React.Component {
         }
 
         if(optionItems != null) {
-            return <div id={option.name}><p className={styles.main_text}>{option.name} </p>
+            return <div id={option.name}>
+                <table>
+                <tr>
+                    <p className={styles.main_text + " " + styles.linespace}>{option.name} </p></tr>
                 {
                     optionItems != null ?
-                        <select className={styles.select_width}
+                        <tr><select className={styles.select_width}
                                 defaultValue="None"
                                 onChange={this.props.setProductOption.bind(null, option.id)}>
                             {optionItems}
                         </select>
+                        </tr>
                         : null
                 }
+                </table>
             </div>
+
         }
         return null;
     }
