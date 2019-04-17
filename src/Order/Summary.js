@@ -74,7 +74,7 @@ class Summary extends Component {
               </ul>
             </div>
             <div className={styles.productInformation}>
-              <img className={styles.image} src={category.img.sm} alt='image' />
+              <img className={styles.image} src={category.img.sm} alt='vehicle' />
               {/* This will iterate through all the selected options so you can see what the user chose. */}
               <ul className={styles.display}>
                 {Object.keys(selectedOptions).map(option => {
