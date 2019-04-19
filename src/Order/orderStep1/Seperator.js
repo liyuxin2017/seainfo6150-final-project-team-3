@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from "./OptionsSeperator.module.css";
 
-class OptionsSeperator extends Component {
+class Seperator extends Component {
     /*constructor(props) {
         super(props);
     }*/
@@ -32,9 +32,9 @@ class OptionsSeperator extends Component {
                 });
             }
             let optionItems = [];
-            optionItems.push(<option value={null}>No Preference</option>);
+            optionItems.push(<option key={option.id+"null"} value={null}>No Preference</option>);
             for (let i = 0; i<colors.length; i++ ) {
-                optionItems.push(<option value={colors[i]} style={colorDisplay(colors[i])}>{colors[i]}</option>);
+                optionItems.push(<option key={option.id+colors[i]} value={colors[i]} style={colorDisplay(colors[i])}>{colors[i]}</option>);
             }
             return optionItems;
         }
@@ -45,17 +45,18 @@ class OptionsSeperator extends Component {
         if (option.id === 'hoodOrnament' && this.props.selectedOptions['hasHoodOrnament']) {
             let optionItems = [];
             Object.values(option.values).forEach((val) => {
-                optionItems.push(<div className={styles.option_image}
+                optionItems.push(<td className={styles.option_image} key={"uni"+val.id}
                                       value={val}>
-                    <td><input type="checkbox"
+                    <input type="checkbox"
                            name={option.name}
                            value={val.id}
+                               className={styles.input_box}
                            onChange={this.props.setProductOption.bind(null, option.id)}
                                checked={this.props.selectedOptions['hoodOrnament'] === val.id}/>
                     <img className={styles.option_image}
                          src={val.img}
-                         alt={val.id}/></td>
-                </div>);
+                         alt={val.id}/>
+                </td>);
             });
             return optionItems;
         }
@@ -66,17 +67,19 @@ class OptionsSeperator extends Component {
         if (option.id === 'trunkMonkey' && this.props.selectedOptions['hasTrunkMonkey']) {
             let optionItems = [];
             Object.values(option.values).forEach((val) => {
-                optionItems.push(<div className={styles.option_image}
+                optionItems.push(<td className={styles.option_image}
+                                     key={"sam"+val.id}
                                       value={val}>
-                        <td><input type="checkbox"
+                        <input type="checkbox"
                            name={option.name}
                            value={val.id}
+                                   className={styles.input_box}
                            onChange={this.props.setProductOption.bind(null, option.id)}
                                    checked={this.props.selectedOptions['trunkMonkey'] === val.id}/>
                         <img className={styles.option_image}
                          src={val.img.sm}
-                             alt={val.id}/></td>
-                </div>);
+                             alt={val.id}/>
+                </td>);
 
             });
             return optionItems;
@@ -135,9 +138,9 @@ class OptionsSeperator extends Component {
             }
 
             let optionItems = [];
-            optionItems.push(<option value={null}>No Preference</option>);
+            optionItems.push(<option key={option.id+"null"} value={null}>No Preference</option>);
             for (let i = minNumber; i <= maxNumber; i++) {
-                optionItems.push(<option value={i}>{i}</option>);
+                optionItems.push(<option key={option.id+i} value={i}>{i}</option>);
             }
 
             return optionItems;
@@ -161,25 +164,31 @@ class OptionsSeperator extends Component {
             if (radio_flag) {
                 return <div>
                     <table>
+                        <tbody>
                         <tr>
                             <td> <p className={styles.main_text +" " + styles.check_box_input}>{option.name} </p>
                             </td>
                              <td>   <input type="checkbox" name={option.name} value={option.name}
-                                       onClick={this.props.setProductOption.bind(null, option.id)}
-                                       checked={this.props.selectedOptions['option.name']}/>
+                                           className={styles.input_box}
+                                       onChange={this.props.setProductOption.bind(null, option.id)}
+                                       checked={this.props.selectedOptions[option.id]}/>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             } else {
-                return <div>
+                return <div key={this.getRandom()}>
                     <table>
+                        <tbody>
                         <tr>
                     <td><p className={styles.main_text +" " + styles.check_box_input}>{option.name}</p></td>
                     <td><input type="checkbox" name={option.name} value={option.name}
+                               className={styles.input_box}
                            onClick={this.props.setProductOption.bind(null, option.id)}
                                checked={default_val} disabled={true}/></td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             }
@@ -193,14 +202,23 @@ class OptionsSeperator extends Component {
             optionItems = this.getHoodOrnaments(option);
         }
         if(optionItems != null) {
-            return <div>
+            return <div key={this.getRandom()}>
                 <table>
-                    <tr><p className={styles.main_text}>{option.name}</p></tr>
+                    <tbody>
+                    <tr><td>{option.name}</td></tr>
                     <tr>{optionItems}</tr>
+                    </tbody>
                 </table>
             </div>;
         }
         return null;
+    }
+
+    getRandom() {
+        const min = 1;
+        const max = 100000;
+        const rand = min + Math.random() * (max - min);
+        return rand;
     }
 
     formAllOtherOptions(option) {
@@ -234,27 +252,32 @@ class OptionsSeperator extends Component {
 
         if (optionItems == null && option.values !== undefined) {
             optionItems = [];
-            optionItems.push(<option value={null}>No Preference</option>);
+            optionItems.push(<option key={option.id+"null"} value={null}>No Preference</option>);
             for (let i = 0; i<option.values.length; i++ ) {
-                optionItems.push(<option value={option.values[i]}>{option.values[i]}</option>);
+                optionItems.push(<option key={option.id+option.values[i]} value={option.values[i]}>{option.values[i]}</option>);
             }
         }
 
         if(optionItems != null) {
             return <div id={option.name + " "+ styles.responsive}>
                 <table>
+                <tbody>
                 <tr>
-                    <p className={styles.main_text}>{option.name} </p></tr>
+                    <td className={styles.main_text}>{option.name}</td>
+                </tr>
                 {
                     optionItems != null ?
-                        <tr><select className={styles.select_width}
+                        <tr><td><select className={styles.select_width}
+                                        key={this.getRandom()}
                                 defaultValue="None"
                                 onChange={this.props.setProductOption.bind(null, option.id)}>
                             {optionItems}
                         </select>
+                        </td>
                         </tr>
                         : null
                 }
+                </tbody>
                 </table>
             </div>
 
@@ -283,7 +306,7 @@ class OptionsSeperator extends Component {
     }
 }
 
-OptionsSeperator.propTypes = {
+Seperator.propTypes = {
     selectedProduct: PropTypes.string.isRequired,
     options: PropTypes.object.isRequired,
     allowedValues: PropTypes.array.isRequired,
@@ -291,4 +314,4 @@ OptionsSeperator.propTypes = {
     selectedOptions: PropTypes.object.isRequired,
 };
 
-export default OptionsSeperator;
+export default Seperator;

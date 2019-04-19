@@ -48,9 +48,3 @@
   width:100%;
 }
 
-@media screen and (max-width:450px) {
-  .submit .top-panel .button .bottom-panel .container {
-    width:100%;
-    grid-template-columns: 50% 50%;
-  }
-}

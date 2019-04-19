@@ -34,9 +34,17 @@ td {
     white-space: nowrap;
 }
 
-@media screen and (max-width:450px) {
-        .main_text .option_image{
-            width:100%;
-           /* grid-template-columns: 50% 50%;*/
-        }
+.input_box {
+    height: 0em;
+}
+
+@media screen and (max-width:900px) {
+
+    .input_box {
+        height: 0em;
     }
+
+    input:not {
+        height: 0em;
+    }
+}

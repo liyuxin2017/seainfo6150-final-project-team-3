@@ -1,8 +1,6 @@
 .header {
     cursor: pointer;
-    /*border: solid 1px #f2f2f2;*/
     padding: 0.938em;
-    /*background-color: #0089CC;*/
     color: black;
     text-align: center;
     text-decoration: underline;
@@ -30,9 +28,69 @@
     padding: 10%;
 }
 
-@media screen and (max-width:450px) {
-    .top-panel .main_div .header .content {
-        width:100%;
+.input_box {
+    height: 0em;
+}
+
+@media screen and (max-width:800px) {
+    .top-panel {
+        display: block;
+    }
+
+    .main_div {
+        padding: 0em;
+    }
+
+    .content {
+        padding: 0em;
+        font-size: .8em;
+    }
+
+    td, th {
+        vertical-align: inherit;
+        display: inline-block;
+    }
+
+    .input_box {
+        height: 0em;
+    }
+
+    input:not {
+        height: 0em;
+    }
+}
+
+@media screen and (max-width:340px) {
+    .header{
+        cursor: pointer;
+        color: blue;
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 1em;
+        text-decoration: none;
+    }
+
+    .top-panel {
+        display: block;
+    }
+
+    .main_div {
+        padding: 0em;
+    }
+
+    .content {
+        padding: 0em;
+        font-size: .8em;
+    }
+
+    td, th {
+        vertical-align: inherit;
+        display: inline-block;
+    }
+
+    .input_box {
+        height: 0em;
     }
 }
 

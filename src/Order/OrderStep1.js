@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import ExteriorOptions from './orderStep1/ExteriorOptions';
+import Selector from './orderStep1/Selector';
 import styles from './OrderStep1.module.css';
 
 class OrderStep1 extends Component {
@@ -31,29 +31,15 @@ class OrderStep1 extends Component {
       opt = (
         <div className={styles.container + ' ' + styles.responsive}>
           <div>
-            {/*{<PowerOptions className={styles["panel"]}*/}
-            {/*setProductOption = {this.props.setProductOption}*/}
-            {/*selectedProduct={selectedProductCategoryId}*/}
-            {/*selectedOptions={this.props.selectedOptions}*/}
-            {/*options={this.props.options}/>}*/}
-            {/*{<InteriorOptions*/}
-            {/*setProductOption = {this.props.setProductOption}*/}
-            {/*selectedProduct={selectedProductCategoryId}*/}
-            {/*selectedOptions={this.props.selectedOptions}*/}
-            {/*options={this.props.options}/>}*/}
             {
-              <ExteriorOptions
+              /* eslint-disable */
+              <Selector
                 setProductOption={this.props.setProductOption}
                 selectedProduct={selectedProductCategoryId}
                 selectedOptions={this.props.selectedOptions}
                 options={this.props.options}
               />
             }
-            {/*{<PremiumFeatures*/}
-            {/*setProductOption = {this.props.setProductOption}*/}
-            {/*selectedProduct={selectedProductCategoryId}*/}
-            {/*selectedOptions={this.props.selectedOptions}*/}
-            {/*options={this.props.options}/>}*/}
           </div>
           <div className={styles['bottom-panel']}>
             <img
@@ -68,7 +54,7 @@ class OrderStep1 extends Component {
     return this.state.submittedSuccessfully ? (
       <Redirect to='/order/2' />
     ) : (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit.bind(this)} key={"OrderStep2 go"}>
         {opt}
         <fieldset className={styles.button}>
           <input className={styles.submit} type='submit' value='Go to Step 2' />
