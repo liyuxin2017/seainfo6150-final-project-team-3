@@ -51,5 +51,11 @@
   }
 }
 
+@media screen and (min-width:320px) {
+  .head .productInfo .productTextInfo .link .button .image {
+    width:100%;
+  }
+}
+
 
 

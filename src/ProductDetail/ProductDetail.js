@@ -58,7 +58,7 @@ class ProductDetail extends PureComponent {
 
                 <span> Model: {product.title}</span>
                 <br />
-                <span> Year: {product.year}</span>
+                <span> MakeYear: {product.year}</span>
                 <br />
                 <span><Price pro={product.sale} /></span>
                 <span> Description: {product.description}</span>

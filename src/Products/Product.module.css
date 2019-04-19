@@ -30,3 +30,9 @@
     width:100%;
   }
 }
+
+@media screen and (min-width:320px) {
+  .detail .animation .image {
+    width:100%;
+  }
+}
