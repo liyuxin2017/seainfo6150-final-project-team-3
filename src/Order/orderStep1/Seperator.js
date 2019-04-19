@@ -45,9 +45,9 @@ class Seperator extends Component {
         if (option.id === 'hoodOrnament' && this.props.selectedOptions['hasHoodOrnament']) {
             let optionItems = [];
             Object.values(option.values).forEach((val) => {
-                optionItems.push(<td className={styles.option_image} key={"uni"+val.id}
+                optionItems.push(<div className={styles.option_image} key={"uni"+val.id}
                                       value={val}>
-                    <input type="checkbox"
+                    <td><input type="checkbox"
                            name={option.name}
                            value={val.id}
                                className={styles.input_box}
@@ -56,7 +56,8 @@ class Seperator extends Component {
                     <img className={styles.option_image}
                          src={val.img}
                          alt={val.id}/>
-                </td>);
+                    </td>
+                </div>);
             });
             return optionItems;
         }
@@ -67,9 +68,10 @@ class Seperator extends Component {
         if (option.id === 'trunkMonkey' && this.props.selectedOptions['hasTrunkMonkey']) {
             let optionItems = [];
             Object.values(option.values).forEach((val) => {
-                optionItems.push(<td className={styles.option_image}
+                optionItems.push(<div className={styles.option_image}
                                      key={"sam"+val.id}
                                       value={val}>
+                    <td>
                         <input type="checkbox"
                            name={option.name}
                            value={val.id}
@@ -78,8 +80,8 @@ class Seperator extends Component {
                                    checked={this.props.selectedOptions['trunkMonkey'] === val.id}/>
                         <img className={styles.option_image}
                          src={val.img.sm}
-                             alt={val.id}/>
-                </td>);
+                             alt={val.id}/></td>
+                </div>);
 
             });
             return optionItems;
